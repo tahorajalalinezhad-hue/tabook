@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>بازیابی رمز عبور</title>
+  
+   <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+  
+  <style>
+    body {
+      font-family: 'Tahoma', 'Segoe UI', sans-serif;
+      background-color: #f0f4f8;
+    }
+    .otp-input {
+      width: 60px;
+      height: 60px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+
+  <header class="bg-primary text-white text-center py-4 shadow-sm mb-4">
+    <h1 class="h4 fw-bold">بازیابی رمز عبور</h1>
+    <p class="mb-0 opacity-75">برای بازنشانی رمز عبور مراحل زیر را طی کنید</p>
+  </header>
+
+  <div class="container mb-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        
+        <div class="card shadow border-0 rounded-4">
+          <div class="card-body p-4 p-md-5">
+            
+
+            <div id="step1">
+              <h2 class="text-center mb-4 text-primary fw-bold">اطلاعات هویتی</h2>
+              <form id="formStep1">
+                <div class="mb-3">
+                  <label for="fullName" class="form-label fw-bold">نام و نام خانوادگی</label>
+                  <input type="text" class="form-control" id="fullName" placeholder="مثلاً: علی رضایی" required>
+                </div>
+                <div class="mb-4">
+                  <label for="phone" class="form-label fw-bold">شماره تلفن همراه</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="0912..." required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 py-2 rounded-pill fw-bold">
+                  ارسال کد تایید
+                </button>
+              </form>
+            </div>
+
+
+            <div id="step2" class="d-none">
+              <h2 class="text-center mb-4 text-primary fw-bold">کد تایید</h2>
+              <p class="text-center text-muted mb-4">کد ۴ رقمی ارسال شده به شماره <strong id="displayPhone"></strong> را وارد کنید.</p>
+              
+              <div class="d-flex justify-content-center gap-2 mb-4">
+                <input type="text" class="form-control otp-input text-center" maxlength="1" id="otp1">
+                <input type="text" class="form-control otp-input text-center" maxlength="1" id="otp2">
+                <input type="text" class="form-control otp-input text-center" maxlength="1" id="otp3">
+                <input type="text" class="form-control otp-input text-center" maxlength="1" id="otp4">
+              </div>
+
+              <button type="submit" id="btnVerifyOtp" class="btn btn-primary w-100 py-2 rounded-pill fw-bold">
+                بررسی کد
+              </button>
+            </div>
+
+
+            <div id="step3" class="d-none">
+              <h2 class="text-center mb-4 text-primary fw-bold">رمز عبور جدید</h2>
+              <form id="formStep3">
+                <div class="mb-3">
+                  <label for="newPassword" class="form-label fw-bold">رمز عبور جدید</label>
+                  <input type="password" class="form-control" id="newPassword" placeholder="رمز جدید خود را وارد کنید" required>
+                </div>
+                <div class="mb-4">
+                  <label for="confirmPassword" class="form-label fw-bold">تکرار رمز عبور</label>
+                  <input type="password" class="form-control" id="confirmPassword" placeholder="تکرار رمز جدید" required>
+                </div>
+                <button type="submit" class="btn btn-success w-100 py-2 rounded-pill fw-bold">
+                  ثبت نهایی و تغییر رمز
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center p-4">
+        <div class="modal-header border-0 justify-content-center">
+          <h5 class="modal-title fw-bold text-success fs-4">موفقیت‌آمیز!</h5>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3">
+            <span class="display-6 text-success">✅</span>
+          </div>
+          <p class="fs-5 fw-bold">رمز عبور شما با موفقیت تغییر یافت.</p>
+          <p class="text-muted">می‌توانید با رمز جدید خود وارد حساب کاربری شوید.</p>
+        </div>
+        <div class="modal-footer border-0 justify-content-center">
+          <button type="button" class="btn btn-primary px-4 rounded-pill" data-bs-dismiss="modal">ورود به حساب</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+
+
+    document.getElementById('formStep1').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const phone = document.getElementById('phone').value;
+      const fullName = document.getElementById('fullName').value;
+
+      if(phone.length < 10) {
+        alert('لطفاً شماره تلفن صحیح وارد کنید.');
+        return;
+      }
+
+
+      document.getElementById('displayPhone').innerText = phone;
+      
+
+      document.getElementById('step1').classList.add('d-none');
+      document.getElementById('step2').classList.remove('d-none');
+      
+
+      document.getElementById('otp1').focus();
+    });
+
+
+    document.getElementById('btnVerifyOtp').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const otp1 = document.getElementById('otp1').value;
+      const otp2 = document.getElementById('otp2').value;
+      const otp3 = document.getElementById('otp3').value;
+      const otp4 = document.getElementById('otp4').value;
+
+      const fullCode = otp1 + otp2 + otp3 + otp4;
+
+      if (fullCode.length !== 4) {
+        alert('لطفاً کد ۴ رقمی را کامل وارد کنید.');
+        return;
+      }
+
+
+      document.getElementById('step2').classList.add('d-none');
+      document.getElementById('step3').classList.remove('d-none');
+    });
+
+
+    document.getElementById('formStep3').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const pass = document.getElementById('newPassword').value;
+      const confirmPass = document.getElementById('confirmPassword').value;
+
+      if (pass !== confirmPass) {
+        alert('رمز عبور و تکرار آن یکسان نیستند!');
+        return;
+      }
+
+      if (pass.length < 6) {
+        alert('رمز عبور باید حداقل ۶ کاراکتر باشد.');
+        return;
+      }
+
+      const modal = new bootstrap.Modal(document.getElementById('successModal'));
+      modal.show();
+
+    });
+
+    const otpInputs = document.querySelectorAll('.otp-input');
+    otpInputs.forEach((input, index) => {
+      input.addEventListener('input', (e) => {
+        if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+          otpInputs[index + 1].focus();
+        }
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+          otpInputs[index - 1].focus();
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

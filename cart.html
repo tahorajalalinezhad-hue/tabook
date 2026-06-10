@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>سبد خرید | طابوک</title>
+
+<link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<style>
+
+body{
+font-family:Vazirmatn,sans-serif;
+background:#f8f9fa;
+}
+
+.book-image{
+height:120px;
+object-fit:cover;
+}
+
+#userInfoSection,
+#gatewaySection{
+display:none;
+}
+
+.form-control{
+height:50px;
+}
+
+textarea.form-control{
+height:auto;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="bg-primary text-white text-center py-4 shadow mb-5">
+
+<h1 class="fw-bold">
+سبد خرید طابوک
+</h1>
+
+<p class="mb-0">
+بررسی و نهایی سازی سفارش
+</p>
+
+</header>
+
+<div class="container">
+
+<div id="cartList"></div>
+
+<div class="card shadow border-0">
+
+<div class="card-body">
+
+<h3
+class="text-primary fw-bold"
+id="grandTotal">
+
+جمع کل: 0 تومان
+
+</h3>
+
+<div class="d-grid mt-4">
+
+<button
+class="btn btn-primary btn-lg rounded-pill"
+onclick="showUserForm()">
+
+ثبت نهایی سفارش
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- اطلاعات کاربر -->
+
+<div
+id="userInfoSection"
+class="card shadow border-0 mt-4">
+
+<div class="card-header bg-primary text-white">
+
+اطلاعات گیرنده
+
+</div>
+
+<div class="card-body">
+
+<div class="row g-3">
+
+<div class="col-md-6">
+
+<label class="form-label">
+نام و نام خانوادگی
+</label>
+
+<input
+type="text"
+class="form-control"
+id="fullname">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+شماره موبایل
+</label>
+
+<input
+type="text"
+class="form-control"
+id="phone">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+کد پستی
+</label>
+
+<input
+type="text"
+class="form-control"
+id="postal">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+ایمیل
+</label>
+
+<input
+type="email"
+class="form-control"
+id="email">
+
+</div>
+
+<div class="col-12">
+
+<label class="form-label">
+آدرس کامل
+</label>
+
+<textarea
+class="form-control"
+rows="4"
+id="address"></textarea>
+
+</div>
+
+<div class="col-12">
+
+<button
+class="btn btn-primary w-100 btn-lg rounded-pill"
+onclick="showGateway()">
+
+ثبت اطلاعات
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- درگاه پرداخت -->
+
+<div
+id="gatewaySection"
+class="card shadow border-0 mt-4 mb-5">
+
+<div class="card-header bg-primary text-white text-center">
+
+درگاه پرداخت اینترنتی
+
+</div>
+
+<div class="card-body">
+
+<div class="mb-3">
+
+<label class="form-label">
+شماره کارت
+</label>
+
+<input
+type="text"
+maxlength="16"
+class="form-control">
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label class="form-label">
+CVV2
+</label>
+
+<input
+type="text"
+class="form-control">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label class="form-label">
+تاریخ انقضا
+</label>
+
+<input
+type="text"
+class="form-control"
+placeholder="01/08">
+
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+رمز پویا
+</label>
+
+<input
+type="password"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+کد اعتبارسنجی
+</label>
+
+<input
+type="text"
+class="form-control">
+
+</div>
+
+<div
+class="text-center border rounded p-3 bg-light mb-3">
+
+A7B9X
+
+</div>
+
+<button
+class="btn btn-primary btn-lg w-100 rounded-pill"
+onclick="finishPayment()">
+
+پرداخت
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+let cart =
+JSON.parse(
+localStorage.getItem("cart")
+) || [];
+
+let html = "";
+
+let total = 0;
+
+cart.forEach((item,index)=>{
+
+const price =
+parseInt(
+item.price.replace(/,/g,'')
+);
+
+const subtotal =
+price * item.qty;
+
+total += subtotal;
+
+html += `
+
+<div class="card shadow border-0 mb-3">
+
+<div class="card-body">
+
+<div class="row align-items-center">
+
+<div class="col-md-2 text-center">
+
+<img
+src="${item.image}"
+class="img-fluid rounded book-image">
+
+</div>
+
+<div class="col-md-4">
+
+<h5 class="fw-bold">
+${item.title}
+</h5>
+
+<p class="text-muted">
+${item.author || ""}
+</p>
+
+</div>
+
+<div class="col-md-2">
+
+تعداد:
+${item.qty}
+
+</div>
+
+<div class="col-md-2 text-success fw-bold">
+
+${subtotal.toLocaleString()}
+تومان
+
+</div>
+
+<div class="col-md-2">
+
+<button
+class="btn btn-danger btn-sm"
+onclick="removeItem(${index})">
+
+حذف
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+if(cart.length===0){
+
+html = `
+
+<div class="alert alert-warning">
+
+سبد خرید شما خالی است.
+
+</div>
+
+`;
+
+}
+
+document.getElementById("cartList").innerHTML = html;
+
+document.getElementById("grandTotal").innerText =
+"جمع کل: " +
+total.toLocaleString() +
+" تومان";
+
+function removeItem(index){
+
+cart.splice(index,1);
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+location.reload();
+
+}
+
+function showUserForm(){
+
+document.getElementById(
+"userInfoSection"
+).style.display="block";
+
+}
+
+function showGateway(){
+
+const fullname =
+document.getElementById("fullname").value;
+
+const phone =
+document.getElementById("phone").value;
+
+const address =
+document.getElementById("address").value;
+
+if(
+fullname==="" ||
+phone==="" ||
+address===""){
+
+alert(
+"لطفاً اطلاعات را کامل وارد کنید"
+);
+
+return;
+
+}
+
+document.getElementById(
+"gatewaySection"
+).style.display="block";
+
+}
+
+function finishPayment(){
+
+alert(
+"پرداخت با موفقیت انجام شد ✅"
+);
+
+localStorage.removeItem("cart");
+
+window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+</html>

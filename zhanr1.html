@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>فروشگاه کتاب</title>
+  <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="bg-light">
+
+  <header class="bg-primary text-white text-center py-4 mb-5 shadow position-relative">
+    <h1 class="h2 fw-bold">طابوک؛کتابه تو!</h1>
+    <p class="lead mt-2">لطفاً ژانر مورد نظر خود را انتخاب کنید!</p>
+    <div class="position-absolute start-0 top-50 translate-middle-y ms-4">
+
+      <button
+      class="btn btn-light position-relative"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#cartSidebar">
+      
+      🛒 سبد خرید
+      
+      <span
+      id="cartCount"
+      class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+      
+      0
+      
+      </span>
+      
+      </button>
+      
+      </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 col-md-12">
+        
+        <div class="card shadow-sm mb-4 border-0">
+          <div class="card-body">
+            <label for="genreSelect" class="form-label fw-bold fs-5">انتخاب ژانر:</label>
+            <select id="genreSelect" class="form-select form-select-lg" onchange="filterBooks()">
+              <option value="">-- لطفاً یک ژانر انتخاب کنید --</option>
+              <option value="love">عاشقانه</option>
+              <option value="fantezi">فانتزی</option>
+              <option value="history">تاریخی</option>
+              <option value="elmi">علمی تخیلی</option>
+              <option value="horror">ترسناک</option>
+              <option value="majara">ماجراجویی</option>
+              <option value="comedy">کمدی</option>
+              <option value="jenaii">جنایی</option>
+              <option value="hemasi">حماسی</option>
+              <option value="mazhabi">مذهبی</option>
+              <option value="realism">رئالیسم</option>
+              <option value="sorealism">سوررئالیسم</option>
+              <option value="terazhedi">تراژدی</option>
+              <option value="angizeshi">انگیزشی</option>
+              <option value="klasik">کلاسیک</option>  
+            </select>
+          </div>
+        </div>
+
+        <div id="booksContainer" class="row g-4">
+
+        </div>
+
+        <div id="noResult" class="text-center py-5 text-muted d-none">
+          <h4 class="fw-bold">کتابی در این ژانر یافت نشد 😔</h4>
+          <p>لطفاً ژانر دیگری را انتخاب کنید.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+  
+    const booksData = [
+      {
+        id: 1,
+        genre: "love",
+        title: "شب های روشن",
+        author: "فیودور داستایوفسکی",
+        price: "336,000",
+        image: "../../gif/love1.jpg" 
+      },
+      {
+        id: 2,
+        genre: "love",
+        title: "بامداد خمار",
+        author: "فتانه حاج سید جوادی",
+        price: "250,000",
+        image: "../../gif/love2.jpg"
+      },
+		{
+        id: 3,
+        genre: "love",
+        title: "پل های مدیسن کاتنی",
+        author: "رابرت جیمز والر|زهره زاهدی",
+        price: "153,000",
+        image: "../../gif/love3.jpg" 
+      },
+      {
+        id: 4,
+        genre: "love",
+        title: "365 روز بدون تو!",
+        author: "آکیرا|نهال سهیلی فر",
+        price: "250,000",
+        image: "../../gif/love4.jpg"
+      },
+	  {
+        id: 5,
+        genre: "love",
+        title: "سووشون",
+        author: "سیمین دانشور",
+        price: "690,000",
+        image: "../../gif/love5.jpg" 
+      },
+      {
+        id: 6,
+        genre: "love",
+        title: "پری دخت",
+        author: "حامد عسگری",
+        price: "421,000",
+        image: "../../gif/love6.jpg"
+      },
+		{
+        id: 7,
+        genre: "love",
+        title: "دالان بهشت",
+        author: "نازی صفوی",
+        price: "351,000",
+        image: "../../gif/love7.jpg" 
+      },
+      {
+        id: 8,
+        genre: "love",
+        title: "ناگفته ها",
+        author: "بهاره حسینی",
+        price: "432,000",
+        image: "../../gif/love8.jpg"
+      },{
+        id: 9,
+        genre: "love",
+        title: "تب تند پیراهنت",
+        author: "زهرا گوبانی",
+        price: "539,000",
+        image: "../../gif/love9.jpg" 
+      },
+      {
+        id: 10,
+        genre: "love",
+        title: "جاده های سیب وحشی",
+        author: "دنیا صفایی فرد",
+        price: "243,000",
+        image: "../../gif/love10.jpg"
+      },
+		{
+        id: 11,
+        genre: "love",
+        title: "من او",
+        author: "رضا امیر خانی",
+        price: "163,000",
+        image: "../../gif/love11.jpg" 
+      },
+      {
+        id: 12,
+        genre: "love",
+        title: "همسر پنهانی",
+        author: "گیل پیل|شیدا رضایی",
+        price: "41,000",
+        image: "../../gif/love12.jpg"
+      },
+		{
+        id: 13,
+        genre: "love",
+        title: "هزار و یک شب به نثر روان",
+        author: "عبداللطیف طسوجی|هستی فرخ",
+        price: "155,000",
+        image: "../../gif/love13.jpg" 
+      },
+      {
+        id: 14,
+        genre: "love",
+        title: "اوتای",
+        author: "اکرم حسین زاده",
+        price: "695,000",
+        image: "../../gif/love14.jpg"
+      },
+		{
+        id: 15,
+        genre: "love",
+        title: "ناتوان",
+        author: "لورن رابرتس|ارین حاتمی راد",
+        price: "412,000",
+        image: "../../gif/love15.jpg"
+      },
+		{
+        id: 16,
+        genre: "love",
+        title: "دخترها همیشه مقصرند",
+        author: "مهسا پناهی",
+        price: "185,000",
+        image: "../../gif/love16.jpg" 
+      },
+      {
+        id: 17,
+        genre: "love",
+        title: "عاشقانه های یواشکی",
+        author: "مریم اسدی علیایی",
+        price: "423,000",
+        image: "../../gif/love17.jpg"
+      },
+		{
+        id: 18,
+        genre: "love",
+        title: "پنج قدم فاصله",
+        author: "ریچل لیپینکات|فاطمه صبحی",
+        price: "275,000",
+        image: "../../gif/love18.jpg" 
+      },
+      {
+        id: 19,
+        genre: "love",
+        title: "دختری که رهایش کردی",
+        author: "جوجو مویز|کتایون اسماعیلی",
+        price: "98,000",
+        image: "../../gif/love19.jpg"
+      },
+		{
+        id: 20,
+        genre: "love",
+        title: "جنگجوی عشق",
+        author: "گلنن دویل ملتن",
+        price: "423,000",
+        image: "../../gif/love20.jpg"
+      },
+		{
+        id: 21,
+        genre: "love",
+        title: "برباد رفته",
+        author: "مارگارت میچل|الهام رحمانی",
+        price: "461,000",
+        image: "../../gif/love21.jpg" 
+      },
+      {
+        id: 22,
+        genre: "love",
+        title: "من پیش از تو",
+        author: "جوجو مویز|کتایون اسماعیلی",
+        price: "98,000",
+        image: "../../gif/love22.jpg"
+      },
+		{
+        id: 23,
+        genre: "love",
+        title: "النور و پارک",
+        author: "رینبو راول|سمانه پرهیزکاری",
+        price: "842,000",
+        image: "../../gif/love23.jpg" 
+      },
+      {
+        id: 24,
+        genre: "love",
+        title: "جایی که عاشق بودیم",
+        author: "جنیفر نیون|فرانک مفنوی",
+        price: "147,000",
+        image: "../../gif/love24.jpg"
+      },
+		{
+        id: 25,
+        genre: "love",
+        title: "اشتباه در ستاره بخت ما",
+        author: "جان گرین|مهرداد بازیاری",
+        price: "437,000",
+        image: "../../gif/love25.jpg" 
+      },
+      {
+        id: 26,
+        genre: "love",
+        title: "در بوسه های تو به خواب خواهم رفت",
+        author: "پابلو نرودا|حدیث رجبی",
+        price: "235,000",
+        image: "../../gif/love26.jpg"
+      },
+		{
+        id: 27,
+        genre: "love",
+        title: "عاشق بودن",
+        author: "حدیث لزر غلامی",
+        price: "109,000",
+        image: "../../gif/love27.jpg" 
+      },
+		{
+        id: 28,
+        genre: "love",
+        title: "رستاخیز عشق",
+        author: "لئو  تولستوی|علی اصغر حکمت",
+        price: "542,000",
+        image: "../../gif/love28.jpg"
+      },
+      {
+        id: 29,
+        genre: "love",
+        title: "هرشب با خیالت برو بیایی دارم",
+        author: "محبوبه بوری",
+        price: "90,000",
+        image: "../../gif/love29.jpg"
+      },
+		 {
+        id: 30,
+        genre: "love",
+        title: "رقیب های ازلی",
+        author: "ربکاراس|اطلسی خرامانی",
+        price: "100,000",
+        image: "../../gif/love30.jpg"
+      },
+		 {
+        id: 31,
+        genre: "love",
+        title: "لیلی و مجنون",
+        author: "مرتضی رسیدی آجردی|علی اکبر احمدی دارانی",
+        price: "784,000",
+        image: "../../gif/love31.jpg"
+      },
+		 {
+        id: 32,
+        genre: "love",
+        title: "برباد رفته",
+        author: "محبوبه بوری",
+        price: "653,000",
+        image: "../../gif/love32.jpg"
+      },
+		 {
+        id: 33,
+        genre: "love",
+        title: "دزیره",
+        author: "آن ماری سلینکو|ایرج پزشکزاد",
+        price: "987,000",
+        image: "../../gif/love33.jpg"
+      },
+		
+		
+		
+      {
+        id: 34,
+        genre: "fantezi",
+        title: "بی باک",
+        author: "لورن رابرتس|پگاه فرهنگ مهر",
+        price: "1,654,000",
+        image: "../../gif/fantezi1.jpg"
+      },
+      {
+        id: 35,
+        genre: "fantezi",
+        title: "جناح چهارم",
+        author: "ربکا یاروز|اطلسی خرامانی",
+        price: "380,000",
+        image: "../../gif/fantezi2.jpg"
+      },
+		{
+        id: 36,
+        genre: "fantezi",
+        title: "قدرتمند",
+        author: "لورن رابرتس|پگاه فرهنگ مهر",
+        price: "1,241,000",
+        image: "../../gif/fantezi3.jpg"
+      },
+      {
+        id: 37,
+        genre: "fantezi",
+        title: "سایه های میان ما",
+        author: "تریشیا لونسر|فاطمه حامدی فر",
+        price: "880,000",
+        image: "../../gif/fantezi4.jpg"
+      },
+		{
+        id: 38,
+        genre: "fantezi",
+        title: "میدگارد2",
+        author: "احمدرضا صالحی سیف ابادی",
+        price: "125,000",
+        image: "../../gif/fantezi5.jpg"
+      },
+      {
+        id: 39,
+        genre: "fantezi",
+        title: "افسانه های هزارویک شب",
+        author: "گو دول|رویا خویی",
+        price: "450,000",
+        image: "../../gif/fantezi6.jpg"
+      },
+		{
+        id: 40,
+        genre: "fantezi",
+        title: "پسران نشان دار؛سرانجام مرگ",
+        author: "جوزف فازمن|جواد فیضی",
+        price: "241,000",
+        image: "../../gif/fantezi7.jpg"
+      },
+      {
+        id: 41,
+        genre: "fantezi",
+        title: "داس مرگ",
+        author: "نیل شوسترمن|آرزو مقدس",
+        price: "143,000",
+        image: "../../gif/fantezi8.jpg"
+      },
+		{
+        id: 42,
+        genre: "fantezi",
+        title: "اساطیر نورس",
+        author: "نیل گیمن|رحیم قاسمیان",
+        price: "381,000",
+        image: "../../gif/fantezi9.jpg"
+      },
+      {
+        id: 43,
+        genre: "fantezi",
+        title: "کورالاین",
+        author: "نیل گیمن|فرزاد فربد",
+        price: "634,000",
+        image: "../../gif/fantezi10.jpg"
+      },
+		{
+        id: 44,
+        genre: "fantezi",
+        title: "کافه ماه کامل",
+        author: "مایی موچیزوکی|آرزو قلی زاده",
+        price: "840,000",
+        image: "../../gif/fantezi11.jpg"
+      },
+      {
+        id: 45,
+        genre: "fantezi",
+        title: "هری پاتر؛جلد7:هری پاتر و یادگاران مرگ",
+        author: "جی.کی.رولینگ|ویدا اسلامیه",
+        price: "1,248,000",
+        image: "../../gif/fantezi12.jpg"
+      },
+		{
+        id: 46,
+        genre: "fantezi",
+        title: "هری پاتر؛جلد6:هری پاتر و شاهزاده دورگه",
+        author: "جی.کی.رولینگ|ویدا اسلامیه",
+        price: "1,525,000",
+        image: "../../gif/fantezi13.jpg"
+      },
+      {
+        id: 47,
+        genre: "fantezi",
+        title: "پسران نشان دار؛تغییر و عطش",
+        author: "جوزف فازمن|جواد فیضی",
+        price: "125,000",
+        image: "../../gif/fantezi14.jpg"
+      },
+		{
+        id: 48,
+        genre: "fantezi",
+        title: "هزار قدم در دل شب",
+        author: "تریسی چی|مهشید شبانیان",
+        price: "141,000",
+        image: "../../gif/fantezi15.jpg"
+      },
+      {
+        id: 49,
+        genre: "fantezi",
+        title: "رانده شده",
+        author: "پگاه خدادی",
+        price: "100,000",
+        image: "../../gif/fantezi16.jpg"
+      },
+		{
+        id: 50,
+        genre: "fantezi",
+        title: "آنگاه که ماه شکفت",
+        author: "سارا ای. پارکر|یاسمن عنابستانی",
+        price: "165,000",
+        image: "../../gif/fantezi17.jpg"
+      },
+      {
+        id: 51,
+        genre: "fantezi",
+        title: "سوشیانت",
+        author: "مهسا حاجی قرمانی زاده",
+        price: "438,000",
+        image: "../../gif/fantezi18.jpg"
+      },
+		{
+        id: 52,
+        genre: "fantezi",
+        title: "شهر کابوس ها",
+        author: "ربکا شیفر|رامتین امیراصلانی",
+        price: "129,000",
+        image: "../../gif/fantezi19.jpg"
+      },
+      {
+        id: 53,
+        genre: "fantezi",
+        title: "پرسی جکسون و ایزدان المپ؛دریای هیولاها",
+        author: "ریک ریوردان|آرزو مقدس",
+        price: "181,000",
+        image: "../../gif/fantezi20.jpg"
+      },
+		{
+        id: 54,
+        genre: "fantezi",
+        title: "هارلی مرلین؛هارلی مرلین و جادوگران ربوده شده",
+        author: "بلا فارست|زهرا چفلکی",
+        price: "350,000",
+        image: "../../gif/fantezi21.jpg"
+      },
+      {
+        id: 55,
+        genre: "fantezi",
+        title: "تصویر بزرگ",
+        author: "دینو بوتزاتی||بهمن فرزانه",
+        price: "680,000",
+        image: "../../gif/fantezi22.jpg"
+      },
+		{
+        id: 56,
+        genre: "fantezi",
+        title: "رودخانه ای از نقره",
+        author: "شنون آ. چاکرابورتی|مطهره اسلامی",
+        price: "252,000",
+        image: "../../gif/fantezi23.jpg"
+      },
+      {
+        id: 57,
+        genre: "fantezi",
+        title: "هاگوارتز:یک راهنمای ناقص و غیر قابل اطمینان",
+        author: "جی. کی. رولینگ",
+        price: "431,000",
+        image: "../../gif/fantezi24.jpg"
+      },
+		{
+        id: 58,
+        genre: "fantezi",
+        title: "فنا ناپذیر",
+        author: "سلمان سمیعی",
+        price: "274,000",
+        image: "../../gif/fantezi25.jpg"
+      },
+      {
+        id: 59,
+        genre: "fantezi",
+        title: "همه آنان از خدایان بودند؛رستگاری",
+        author: "امین فرد",
+        price: "634,000",
+        image: "../../gif/fantezi26.jpg"
+      },
+		{
+        id: 60,
+        genre: "fantezi",
+        title: "بلگراد:پیام پیشگو",
+        author: "دیوید ادینگز|ناهید علیخانی",
+        price: "351,000",
+        image: "../../gif/fantezi27.jpg"
+      },
+      {
+        id: 61,
+        genre: "fantezi",
+        title: "گرگ های سفید",
+        author: "دیوید گمل|علی طالعی",
+        price: "128,000",
+        image: "../../gif/fantezi28.jpg"
+      },
+		{
+        id: 62,
+        genre: "fantezi",
+        title: "انتقام تاریک",
+        author: "محمد کرمی",
+        price: "152,000",
+        image: "../../gif/fantezi29.jpg"
+      },
+      {
+        id: 63,
+        genre: "fantezi",
+        title: "پرسی جکسون و ایزدان المپ؛دزد آذرخش",
+        author: "ریک ریوردان|آرزو مقدس",
+        price: "550,000",
+        image: "../../gif/fantezi30.jpg"
+      },
+		{
+        id: 64,
+        genre: "fantezi",
+        title: "پرسی جکسون و ایزدان المپ؛نفرین تایتان",
+        author: "ریک ریوردان|آرزو مقدس",
+        price: "621,000",
+        image: "../../gif/fantezi31.jpg"
+      },
+      {
+        id: 65,
+        genre: "fantezi",
+        title: "زام بی؛ماموریت زام بی",
+        author: "دارن شان|امیر مهدی عاطفی نیا",
+        price: "166,000",
+        image: "../../gif/fantezi32.jpg"
+      },
+		
+		
+		  {
+        id: 66,
+        genre: "history",
+        title: "وقتی نیچه گریست",
+        author: "اروین د. یالوم|ساناز علمی",
+        price: "290,000",
+        image: "../../gif/history1.jpg"
+      },
+	   {
+        id: 67,
+        genre: "history",
+        title: "سینوهه",
+        author: "میکا والتری|زبیح الله منصوری",
+        price: "262,000",
+        image: "../../gif/history2.jpg"
+      },
+		{
+        id: 68,
+        genre: "history",
+        title: "کلنا قاسم",
+        author: "علیرضا سکاکی",
+        price: "321,000",
+        image: "../../gif/history3.jpg"
+      },
+	   {
+        id: 69,
+        genre: "history",
+        title: "حسن صباح؛خداوند الموت",
+        author: "پل آمیر|ذبیح الله منصوری",
+        price: "115,000",
+        image: "../../gif/history4.jpg"
+      },
+		 {
+        id: 70,
+        genre: "history",
+        title: "سرگذشت آب و آتش؛مهرگان",
+        author: "بهار برادران",
+        price: "290,000",
+        image: "../../gif/history5.jpg"
+      },
+	   {
+        id: 71,
+        genre: "history",
+        title: "سرگذشت آب و آتش؛آبانگان",
+        author: "بهار برادران",
+        price: "320,000",
+        image: "../../gif/history6.jpg"
+      },
+		{
+        id: 72,
+        genre: "history",
+        title: "کوروش کبیر",
+        author: "هارولد آلبرت لمب|صادق رضل زاده شفق",
+        price: "140,000",
+        image: "../../gif/history7.jpg"
+      },
+	   {
+        id: 73,
+        genre: "history",
+        title: "گیلگمش",
+        author: "جرج اسمیت|داوود منشی زاده",
+        price: "287,000",
+        image: "../../gif/history8.jpg"
+      },
+		{
+        id: 74,
+        genre: "history",
+        title: "حرمسرای قذافی",
+        author: "آنیک کوژان|سعید اختری زاده",
+        price: "340,000",
+        image: "../../gif/history9.jpg"
+      },
+	   {
+        id: 75,
+        genre: "history",
+        title: "حماسه گیلگمش",
+        author: "ن. ک. ساندرز|محکد اسماعیل فلزی",
+        price: "376,000",
+        image: "../../gif/history10.jpg"
+      },
+		{
+        id: 76,
+        genre: "history",
+        title: "منم کوروش،پادشه جهان",
+        author: "صادق حیدرس نیا",
+        price: "531,000",
+        image: "../../gif/history11.jpg"
+      },
+	   {
+        id: 77,
+        genre: "history",
+        title: "بر جاده های آبی سرخ",
+        author: "نادر ابراهیمی",
+        price: "220,000",
+        image: "../../gif/history12.jpg"
+      },
+		 {
+        id: 78,
+        genre: "history",
+        title: "ذکر حسین بن منصور حلاج",
+        author: "فریدالدین محمد نیشابوری|جلال نوع پرست",
+        price: "681,000",
+        image: "../../gif/history13.jpg"
+      },
+	   {
+        id: 79,
+        genre: "history",
+        title: "کیمیاگر",
+        author: "رضا مصطفوی",
+        price: "450,000",
+        image: "../../gif/history14.jpg"
+      },
+		{
+        id: 80,
+        genre: "history",
+        title: "آسو",
+        author: "محمد امین پورحسینقلی",
+        price: "563,000",
+        image: "../../gif/history15.jpg"
+      },
+	   {
+        id: 81,
+        genre: "history",
+        title: "کلیله و دمنه",
+        author: "نصرالله منشی",
+        price: "598,000",
+        image: "../../gif/history16.jpg"
+      },
+		 {
+        id: 82,
+        genre: "history",
+        title: "مرزبان نامه",
+        author: "سعدالدین وراوینی",
+        price: "371,000",
+        image: "../../gif/history17.jpg"
+      },
+	   {
+        id: 83,
+        genre: "history",
+        title: "نبرد در سکوت",
+        author: "محبوبه زارع",
+        price: "452,000",
+        image: "../../gif/history18.jpg"
+      },
+		{
+        id: 84,
+        genre: "history",
+        title: "کشتی پهلو گرفته",
+        author: "سید مهدی شجاعی",
+        price: "84,000",
+        image: "../../gif/history19.jpg"
+      },
+	   {
+        id: 85,
+        genre: "history",
+        title: "گرگ مغول",
+        author: "امریک|ناهید فروغی",
+        price: "210,000",
+        image: "../../gif/history20.jpg"
+      },
+		 {
+        id: 86,
+        genre: "history",
+        title: "سرگذشت آب و آتش؛آذرگان",
+        author: "بهار برادران",
+        price: "410,000",
+        image: "../../gif/history21.jpg"
+      },
+	   {
+        id: 87,
+        genre: "history",
+        title: "حماسه آغاز می شود",
+        author: "داوود امیریان",
+        price: "250,000",
+        image: "../../gif/history22.jpg"
+      },
+		{
+        id: 88,
+        genre: "history",
+        title: "قلم و تاج",
+        author: "ابراهیم حسن بیگی",
+        price: "621,000",
+        image: "../../gif/history23.jpg"
+      },
+	   {
+        id: 89,
+        genre: "history",
+        title: "پدر",
+        author: "نرجس شکوریان فرد",
+        price: "216,000",
+        image: "../../gif/history24.jpg"
+      },
+		{
+        id: 90,
+        genre: "history",
+        title: "جیران و اسرار حرمسرای ناصرالدین شاه",
+        author: "لطف الله ترقی|حسین لعل",
+        price: "380,000",
+        image: "../../gif/history25.jpg"
+      },
+	   {
+        id: 91,
+        genre: "history",
+        title: "خاطرات یک دختر جوان",
+        author: "آن فرانک|شهلا طهماسبی",
+        price: "235,000",
+        image: "../../gif/history26.jpg"
+      },
+		{
+        id: 92,
+        genre: "history",
+        title: "آتوسا",
+        author: "هلن افشار",
+        price: "420,000",
+        image: "../../gif/history27.jpg"
+      },
+	   {
+        id: 93,
+        genre: "history",
+        title: "اقلیم هشتم",
+        author: "محسن هجری",
+        price: "420,000",
+        image: "../../gif/history28.jpg"
+      },
+		 {
+        id: 94,
+        genre: "history",
+        title: "قصه های بهلول",
+        author: "محمد شب زنده دار",
+        price: "200,000",
+        image: "../../gif/history29.jpg"
+      },
+	   {
+        id: 95,
+        genre: "history",
+        title: "افسانه قاجار؛شاهزاده خانم ناکامی که همیشه ناشناس ماند",
+        author: "حمزه سردادور",
+        price: "670,000",
+        image: "../../gif/history30.jpg"
+      },
+		{
+        id: 96,
+        genre: "history",
+        title: "حریر",
+        author: "فاطمه سلطانی وشنوه",
+        price: "438,000",
+        image: "../../gif/history31.jpg"
+      },
+	   {
+        id: 97,
+        genre: "history",
+        title: "میشل استروگف",
+        author: "ژول ورن|فرزانه مهری",
+        price: "432,000",
+        image: "../../gif/history32.jpg"
+      },
+		{
+        id: 98,
+        genre: "history",
+        title: "وارث آلمانی",
+        author: "آنیکا اسکات|روشنک ضرابی",
+        price: "289,000",
+        image: "../../gif/history33.jpg"
+      },
+		{
+        id: 99,
+        genre: "history",
+        title: "ملک جمشید؛طلسم آصف و طلسم حمام بلور",
+        author: "محمدعلی نقیب الممالک",
+        price: "289,000",
+        image: "../../gif/history34.jpg"
+      },
+		{
+        id: 100,
+        genre: "history",
+        title: "رکسانه و اسکندر",
+        author: "جوآن کریسپی|عبدالحمید فریدی عراقی",
+        price: "175,000",
+        image: "../../gif/history35.jpg"
+      },
+		{
+        id: 101,
+        genre: "history",
+        title: "اسطوره های یونان و روم",
+        author: "دان ناردو|عسکر بهرامی ",
+        price: "175,000",
+        image: "../../gif/history36.jpg"
+      },
+		
+		
+		
+		{
+        id: 102,
+        genre: "elmi",
+        title: "پروژه هیل مری",
+        author: "اندی وییر|حسین شهرابی",
+        price: "205,000",
+        image: "../../gif/elmi1.jpg"
+      },
+      {
+        id: 103,
+        genre: "elmi",
+        title: "تماس با فرازمینی ها",
+        author: "حمیدرضا حیدری نژاد",
+        price: "150,000",
+        image: "../../gif/elmi2.jpg"
+      },
+	  {
+        id: 104,
+        genre: "elmi",
+        title: "پژواک",
+        author: "نیل شوسترمن|آرزو مقدس",
+        price: "391,000",
+        image: "../../gif/elmi3.jpg"
+      },
+      {
+        id: 105,
+        genre: "elmi",
+        title: "زندگی در پانصد سال آینده",
+        author: "سیدعماد صالحی",
+        price: "150,000",
+        image: "../../gif/elmi4.jpg"
+      },
+	  {
+        id: 106,
+        genre: "elmi",
+        title: "دسته گلی برای الجرنون",
+        author: "دنیل کیز|محمدعلی حمید رفیعی",
+        price: "330,000",
+        image: "../../gif/elmi5.jpg"
+      },
+      {
+        id: 107,
+        genre: "elmi",
+        title: "بنیاد",
+        author: "آیزاک آسیموف|حسین شهرابی",
+        price: "160,000",
+        image: "../../gif/elmi6.jpg"
+      },
+	  {
+        id: 108,
+        genre: "elmi",
+        title: "مردان ساعت ده",
+        author: "استیون کینگ|سمیه جعفری نژاد",
+        price: "169,000",
+        image: "../../gif/elmi7.jpg"
+      },
+      {
+        id: 109,
+        genre: "elmi",
+        title: "خط مرگ را نقش بزن",
+        author: "ورونیکا راث|هدیه منصور کیایی",
+        price: "140,000",
+        image: "../../gif/elmi8.jpg"
+      },
+	  {
+        id: 110,
+        genre: "elmi",
+        title: "فرزند سیزدهم",
+        author: "ارین ای. کریگ|نیما جوادی",
+        price: "350,000",
+        image: "../../gif/elmi9.jpg"
+      },
+      {
+        id: 111,
+        genre: "elmi",
+        title: "تماس با فرازمینی ها",
+        author: "حمیدرضا حیدری نژاد",
+        price: "154,000",
+        image: "../../gif/elmi10.jpg"
+      },
+	  {
+        id: 112,
+        genre: "elmi",
+        title: "فرانکلین دوچرخه سواری می کند",
+        author: "پولت بوروژوا|گلرنگ درویشیان",
+        price: "531,000",
+        image: "../../gif/elmi11.jpg"
+      },
+      {
+        id: 113,
+        genre: "elmi",
+        title: "جام اختر غبار",
+        author: "سیدعماد صالحی",
+        price: "460,000",
+        image: "../../gif/elmi12.jpg"
+      },
+      {
+        id: 114,
+        genre: "elmi",
+        title: "مرد تخریب شده",
+        author: "آلفرد بستر|شهناز صاعلی",
+        price: "245,000",
+        image: "../../gif/elmi13.jpg"
+      },
+      {
+        id: 115,
+        genre: "elmi",
+        title: "مسافرت به مرکز زمین",
+        author: "ژول ورن|محمد امینی",
+        price: "570,000",
+        image: "../../gif/elmi14.jpg"
+      },
+	  {
+        id: 116,
+        genre: "elmi",
+        title: "دث استاکر؛شورش",
+        author: "سیمون ار. گرین|آرزو احمی",
+        price: "727,000",
+        image: "../../gif/elmi15.jpg"
+      },
+      {
+        id: 117,
+        genre: "elmi",
+        title: "دث استاکر؛نبرد",
+        author: "سیمون ار. گرین|عاطفه احمدی",
+        price: "691,000",
+        image: "../../gif/elmi16.jpg"
+      },
+	  {
+        id: 118,
+        genre: "elmi",
+        title: "دث استاکر؛کتاب دوم",
+        author: "سیمون ار. گرین|آرزو احمی",
+        price: "205,000",
+        image: "../../gif/elmi17.jpg"
+      },
+      {
+        id: 119,
+        genre: "elmi",
+        title: "برنامه های فرازمینی",
+        author: "ریچارد دولان|مرتضی امیری",
+        price: "632,000",
+        image: "../../gif/elmi18.jpg"
+      },
+	  {
+        id: 120,
+        genre: "elmi",
+        title: "تکنولوژیسم؛غرب ایسم ها",
+        author: "حامد خداداد",
+        price: "200,000",
+        image: "../../gif/elmi19.jpg"
+      },
+      {
+        id: 121,
+        genre: "elmi",
+        title: "دث استاکر؛کتاب اول",
+        author: "سیمون ار. گرین|آرزو احمی",
+        price: "346,000",
+        image: "../../gif/elmi20.jpg"
+      },
+	  {
+        id: 122,
+        genre: "elmi",
+        title: "بیست هزار فرسنگ زیر دریا",
+        author: "ژول ورن|پروین ادیب",
+        price: "102,000",
+        image: "../../gif/elmi21.jpg"
+      },
+      {
+        id: 123,
+        genre: "elmi",
+        title: "زایو",
+        author: "مصطفی رضایی کلورزی",
+        price: "105,000",
+        image: "../../gif/elmi22.jpg"
+      },
+	  {
+        id: 124,
+        genre: "elmi",
+        title: "دونده ی هزار تو؛فرمان کشتار",
+        author: "جیمز دشنر|مینا موسوی",
+        price: "234,000",
+        image: "../../gif/elmi23.jpg"
+      },
+      {
+        id: 125,
+        genre: "elmi",
+        title: "دونده ی هزار تو؛کد تب",
+        author: "جیمز دشنر|ملیکا خوش نژاد",
+        price: "234,000",
+        image: "../../gif/elmi24.jpg"
+      },
+	  {
+        id: 126,
+        genre: "elmi",
+        title: "توقف ناگهانی در ایستگاه جمجمه",
+        author: "مریم صرافین",
+        price: "350,000",
+        image: "../../gif/elmi25.jpg"
+      },
+      {
+        id: 127,
+        genre: "elmi",
+        title: "پاتروس",
+        author: "حمیدرضا رضوانی اول",
+        price: "548,000",
+        image: "../../gif/elmi26.jpg"
+      },
+	  {
+        id: 128,
+        genre: "elmi",
+        title: "پروفسور فر",
+        author: "حمیدرضا رضوانی اول",
+        price: "632,000",
+        image: "../../gif/elmi27.jpg"
+      },
+      {
+        id: 129,
+        genre: "elmi",
+        title: "کمیک سقوط مرگبار؛باران سیاه",
+        author: "معین فرد",
+        price: "341,000",
+        image: "../../gif/elmi28.jpg"
+      },
+      {
+        id: 130,
+        genre: "elmi",
+        title: "سقوط مرگبار؛باران سیاه",
+        author: "آلفرد بستر|شهناز صاعلی",
+        price: "245,000",
+        image: "../../gif/elmi29.jpg"
+      },
+      {
+        id: 131,
+        genre: "elmi",
+        title: "ربات آدم کش",
+        author: "مارتا ولز|فرزین سوری",
+        price: "525,000",
+        image: "../../gif/elmi30.jpg"
+      },
+	  {
+        id: 132,
+        genre: "elmi",
+        title: "جوینده؛جانور",
+        author: "امین فرد",
+        price: "279,000",
+        image: "../../gif/elmi31.jpg"
+      },
+      {
+        id: 133,
+        genre: "elmi",
+        title: "نبرد خدایان؛مرگ خدایان",
+        author: "مرتضی رضایی",
+        price: "230,000",
+        image: "../../gif/elmi32.jpg"
+      },
+	  {
+        id: 134,
+        genre: "elmi",
+        title: "پلیس گفت؛اشکم را جاری کن",
+        author: "فیلیپ کی. دیک|امین نور",
+        price: "554,000",
+        image: "../../gif/elmi33.jpg"
+      },
+		
+		
+		 
+		{
+        id: 135,
+        genre: "horror",
+        title: "بخش دی",
+        author: "فریدا مک فادن|صبا ایمانی",
+        price: "210,000",
+        image: "../../gif/horror1.jpg"
+      },
+		{
+        id: 136,
+        genre: "horror",
+        title: "تیمارستان متروک",
+        author: "دن پبلاکی|رعنا باقریان کوشکقاضی",
+        price: "126,000",
+        image: "../../gif/horror2.jpg"
+      },
+		{
+        id: 137,
+        genre: "horror",
+        title: "داستان های ترسناک برای گفتن در تاریکی؛خانه ارواح",
+        author: "آلوین شوارتز|ملاد شیروانی",
+        price: "350,000",
+        image: "../../gif/horror3.jpg"
+      },
+		{
+        id: 138,
+        genre: "horror",
+        title: "خانه های عجیب",
+        author: "اوکتسو|مژگان رنجبر",
+        price: "670,000",
+        image: "../../gif/horror4.jpg"
+      },
+		{
+        id: 139,
+        genre: "horror",
+        title: "باتلاق شیطان",
+        author: "مرضیه کاظمی|آزاد تیموری",
+        price: "542,000",
+        image: "../../gif/horror5.jpg"
+      },
+		{
+        id: 140,
+        genre: "horror",
+        title: "اتاق مهمان",
+        author: "دریدا سی میچل|محمد صالح نورانی زاده",
+        price: "750,000",
+        image: "../../gif/horror6.jpg"
+      }, 
+		{
+        id: 141,
+        genre: "horror",
+        title: "دره وحشت",
+        author: "آرتور کانن دویل|مژده دقیقی",
+        price: "430,000",
+        image: "../../gif/horror7.jpg"
+      }, 
+		{
+        id: 142,
+        genre: "horror",
+        title: "قلمرو وحشت",
+        author: "آمبروس بیرس|پرویز همتیان بروجنی",
+        price: "600,000",
+        image: "../../gif/horror8.jpg"
+      }, 
+		{
+        id: 143,
+        genre: "horror",
+        title: "رستاخیز",
+        author: "ای.بی.هادسپت|نازیلافرهنگی قلعه جوقی",
+        price: "512,000",
+        image: "../../gif/horror9.jpg"
+      }, 
+		{
+        id: 144,
+        genre: "horror",
+        title: "داستان های ترسناک برای گفتن در تاریکی؛کابوس های شبانه",
+        author: "آلوین شوارتز|میلاد شیروانی",
+        price: "390,000",
+        image: "../../gif/horror10.jpg"
+      }, 
+		{
+        id: 145,
+        genre: "horror",
+        title: "آترا و گردنبند نفرین شده در سزرمین جنیان",
+        author: "فخر الدین هاشمی",
+        price: "250,000",
+        image: "../../gif/horror11.jpg"
+      }, 
+		{
+        id: 146,
+        genre: "horror",
+        title: "احضار کطولحو",
+        author: "هاوارد فیلیپس لاوکرت|پیمان اسماعیلیان",
+        price: "285,000",
+        image: "../../gif/horror12.jpg"
+      }, 
+		{
+        id: 147,
+        genre: "horror",
+        title: "بچه های عجیب و غریب یتیم خانه ی خانم پرگرین",
+        author: "رنسام ریگز|شبنم سعادت",
+        price: "880,000",
+        image: "../../gif/horror13.jpg"
+      }, 
+		{
+        id: 148,
+        genre: "horror",
+        title: "عمارت سوخته",
+        author: "مرضیه کاظمی|آزاد تیموری",
+        price: "315,000",
+        image: "../../gif/horror14.jpg"
+      }, 
+		{
+        id: 149,
+        genre: "horror",
+        title: "کارناوال شوم",
+        author: "ریچارد|مشهود غفارکنی",
+        price: "920,000",
+        image: "../../gif/horror15.jpg"
+      }, 
+		{
+        id: 150,
+        genre: "horror",
+        title: "فرار از تیمارستان",
+        author: "مادلین روکس|ن.شین دانشگر",
+        price: "270,000",
+        image: "../../gif/horror16.jpg"
+      }, 
+		{
+        id: 151,
+        genre: "horror",
+        title: "سیرک عجایب",
+        author: "دارن شان|علی طالبی",
+        price: "600,000",
+        image: "../../gif/horror17.jpg"
+      }, 
+		{
+        id: 152,
+        genre: "horror",
+        title: "گمشده گورستان",
+        author: "لینزی کری|پیمان سلمان زاده",
+        price: "210,000",
+        image: "../../gif/horror18.jpg"
+      },
+		{
+        id: 153,
+        genre: "horror",
+        title: "داستان های ترسناک نیمه شب",
+        author: "جی. بی. استمپر|امین رسمان کارزاده",
+        price: "120,000",
+        image: "../../gif/horror19.jpg"
+      },
+		{
+        id: 154,
+        genre: "horror",
+        title: "آن",
+        author: "استیون کینگ|مهسا صباغی",
+        price: "399,500",
+        image: "../../gif/horror20.jpg"
+      },
+		{
+        id: 155,
+        genre: "horror",
+        title: "یک شب...",
+        author: "زهرا قهرمان",
+        price: "220,000",
+        image: "../../gif/horror21.jpg"
+      },
+		{
+        id: 156,
+        genre: "horror",
+        title: "هفت جن",
+        author: "امید کوره چی",
+        price: "197,400",
+        image: "../../gif/horror22.jpg"
+      },
+		{
+        id: 157,
+        genre: "horror",
+        title: "امپوزیوم",
+        author: "اولگا توکارچوک|تارا کاظمی",
+        price: "370,000",
+        image: "../../gif/horror23.jpg"
+      },
+		{
+        id: 158,
+        genre: "horror",
+        title: "خانه جای مردگان است",
+        author: "جنیوا رز|عادل جنتیان",
+        price: "630,000",
+        image: "../../gif/horror24.jpg"
+      }, 
+		{
+        id: 159,
+        genre: "horror",
+        title: "چشم ها بهترین بخش اند",
+        author: "مونیکا کیم|الهام صیفی کار",
+        price: "900,000",
+        image: "../../gif/horror25.jpg"
+      }, 
+		{
+        id: 160,
+        genre: "horror",
+        title: "قتل علم پاستیلی",
+        author: "چو یه اون |نگین فراشیانی",
+        price: "800,000",
+        image: "../../gif/horror26.jpg"
+      }, 
+		{
+        id: 161,
+        genre: "horror",
+        title: "خیابان هراس؛بازی با اتش",
+        author: "آر.ال.استاین|سید مصطی رضیئی",
+        price: "158,000",
+        image: "../../gif/horror27.jpg"
+      }, 
+		{
+        id: 162,
+        genre: "horror",
+        title: "خیابان هرای؛جابجایی",
+        author: "آر.ال.استاین|آرزو احمی",
+        price: "158,000",
+        image: "../../gif/horror28.jpg"
+      }, 
+		{
+        id: 163,
+        genre: "horror",
+        title: "خیابان هراس؛کابوس ها",
+        author: "آر.ال.استاین|شیوا مقانلو",
+        price: "151,000",
+        image: "../../gif/horror29.jpg"
+      }, 
+		{
+        id: 164,
+        genre: "horror",
+        title: "خیابان هراس؛تماس اشتباه",
+        author: "آر.ال.استاین|سید مصطفی رضیئی",
+        price: "155,000",
+        image: "../../gif/horror30.jpg"
+      }, 
+		{
+        id: 165,
+        genre: "horror",
+        title: "خیابان هراس؛تحسین گر مرموز",
+        author: "آر.ال.استاین|سید مصطفی رضیئی",
+        price: "148,000",
+        image: "../../gif/horror31.jpg"
+      }, 
+		{
+        id: 166,
+        genre: "horror",
+        title: "خیابان هراس|تقلب",
+        author: "آر.ال.استاین|سید مصطفی رضیئی",
+        price: "139,000",
+        image: "../../gif/horror32.jpg"
+      }, 
+		
+		
+		
+		
+		{
+        id: 167,
+        genre: "majara",
+        title: "هردو در نهایت می میرند",
+        author: "آدام سیلورا|میلاد بابانژاد",
+        price: "840,000",
+        image: "../../gif/majara1.jpg"
+      }, 
+		{
+        id: 168,
+        genre: "majara",
+        title: "فارنهایت451",
+        author: "ری برادبری",
+        price: "550,000",
+        image: "../../gif/majara2.jpg"
+      }, 
+		{
+        id: 169,
+        genre: "majara",
+        title: "آوای وحشت",
+        author: "جک لندن|کیومرث پارسای",
+        price: "100,000",
+        image: "../../gif/majara3.jpg"
+      }, 
+		{
+        id: 170,
+        genre: "majara",
+        title: "هری پاتر و محفل ققنوس",
+        author: "جی.کی.رولینگ|آرزو مقدس",
+        price: "413,000",
+        image: "../../gif/majara4.jpg"
+      }, 
+		{
+        id: 171,
+        genre: "majara",
+        title: "کنت مونت کریستو",
+        author: "الکساندر دوما|محسن فرزاد",
+        price: "131,000",
+        image: "../../gif/majara5.jpg"
+      }, 
+		{
+        id: 172,
+        genre: "majara",
+        title: "قلعه متحرک هاول",
+        author: "دایانا وین جونز|نیلوفر رحمانیان",
+        price: "780,000",
+        image: "../../gif/majara6.jpg"
+      }, 
+		{
+        id: 173,
+        genre: "majara",
+        title: "هابیت",
+        author: "جی.ار.ار.تالکین|فرزاد فربد",
+        price: "870,000",
+        image: "../../gif/majara7.jpg"
+      }, 
+		{
+        id: 174,
+        genre: "majara",
+        title: "سالار مگس ها",
+        author: "ویلیام گلدینگ|ناهید شهبازی مقدم",
+        price: "725,000",
+        image: "../../gif/majara8.jpg"
+      }, 
+		{
+        id: 175,
+        genre: "majara",
+        title: "ماجرا های نارنیا؛خواهرزاده جادوگر",
+        author: "آر.ال.استاین|سید مصطفی رضیئی",
+        price: "800,000",
+        image: "../../gif/majara9.jpg"
+      }, 
+		{
+        id: 176,
+        genre: "majara",
+        title: "سه تفنگدار",
+        author: "الکساندر دوما|الیور هو",
+        price: "350,000",
+        image: "../../gif/majara10.jpg"
+      }, 
+		{
+        id: 177,
+        genre: "majara",
+        title: "ماجرا های نارنیا؛شیر ساحره و کمد لباس",
+        author: "سی.اس لوئیس|پیمان اسماعیلیان",
+        price: "880,000",
+        image: "../../gif/majara11.jpg"
+      }, 
+		{
+        id: 178,
+        genre: "majara",
+        title: "ماجرا های نارنیا؛صندلی نقره ای",
+        author: "سی.اس لوئیس|پیمان اسماعیلیان",
+        price: "855,000",
+        image: "../../gif/majara12.jpg"
+      }, 
+		{
+        id: 179,
+        genre: "majara",
+        title: "ماجرا های نارنیا؛اسب و پسرک",
+        author: "سی.اس لوئیس|پیمان اسماعیلیان",
+        price: "823,000",
+        image: "../../gif/majara13.jpg"
+      }, 
+		{
+        id: 180,
+        genre: "majara",
+        title: "ماجرا های نارنیا؛شاهزاده کاسپین",
+        author: "سی.اس لوئیس|پیمان اسماعیلیان",
+        price: "876,000",
+        image: "../../gif/majara14.jpg"
+      }, 
+		{
+        id: 181,
+        genre: "majara",
+        title: "آلکاتراز",
+        author: "نیکو مدینا|محمدرضا افضلی",
+        price: "543,000",
+        image: "../../gif/majara15.jpg"
+      }, 
+		{
+        id: 182,
+        genre: "majara",
+        title: "سفر های گالیور",
+        author: "جاناتان سوئیفت|محمود گودرزی",
+        price: "148,000",
+        image: "../../gif/majara16.jpg"
+      }, 
+		{
+        id: 183,
+        genre: "majara",
+        title: "شب را زنده بمان",
+        author: "رایلی سیجر|مهسا فیروزه چی",
+        price: "160,000",
+        image: "../../gif/majara17.jpg"
+      }, 
+		{
+        id: 184,
+        genre: "majara",
+        title: "آلیس در سرزمین عجایب",
+        author: "لوئیس کارول|سمیه نصرالهی",
+        price: "750,000",
+        image: "../../gif/majara18.jpg"
+      }, 
+		{
+        id: 185,
+        genre: "majara",
+        title: "به سوی طبیعت وحشی",
+        author: "جان کاراکائر|نازنین عظیمی",
+        price: "200,000",
+        image: "../../gif/majara19.jpg"
+      }, 
+		{
+        id: 186,
+        genre: "majara",
+        title: "دور دنیا در هشتاد روز",
+        author: "ژول ورن|آرمین هدایتی",
+        price: "145,000",
+        image: "../../gif/majara20.jpg"
+      }, 
+		{
+        id: 187,
+        genre: "majara",
+        title: "قطار سریع السیر شینکانسن",
+        author: "کوتارو ایساکا|مژگان رنجبر",
+        price: "990,000",
+        image: "../../gif/majara21.jpg"
+      }, 
+		{
+        id: 188,
+        genre: "majara",
+        title: "جزیره گنج",
+        author: "رابرت لوئیس استیونسون|ناهید حاجی سلیمانی",
+        price: "280,000",
+        image: "../../gif/majara22.jpg"
+      }, 
+		{
+        id: 189,
+        genre: "majara",
+        title: "موبی دیک",
+        author: "هرمان ملویل|رضا مرتضوی",
+        price: "450,000",
+        image: "../../gif/majara23.jpg"
+      }, 
+		{
+        id: 190,
+        genre: "majara",
+        title: "دل تاریک",
+        author: "جوزف کنراد|ارمین فیروزگاه",
+        price: "149,000",
+        image: "../../gif/majara24.jpg"
+      }, 
+		{
+        id: 191,
+        genre: "majara",
+        title: "سفر به ماه",
+        author: "ژول ورن|مجید ریاحی",
+        price: "300,000",
+        image: "../../gif/majara25.jpg"
+      }, 
+		{
+        id: 192,
+        genre: "majara",
+        title: "سپید دندان",
+        author: "جک لندن|بهارک قهرمان",
+        price: "100,000",
+        image: "../../gif/majara26.jpg"
+      }, 
+		{
+        id: 193,
+        genre: "majara",
+        title: "میشل استروگف",
+        author: "ژول ورن|صدف محسنی",
+        price: "165,000",
+        image: "../../gif/majara27.jpg"
+      },
+		{
+        id: 194,
+        genre: "majara",
+        title: "بیست هزار فرسنگ زیر دریا",
+        author: "ژول ورن |رضا مرتضوی",
+        price: "450,000",
+        image: "../../gif/majara28.jpg"
+      }, 
+		{
+        id: 195,
+        genre: "majara",
+        title: "هویت بورن",
+        author: "رابرت لادلوم|هادی امینی",
+        price: "340,000",
+        image: "../../gif/majara29.jpg"
+      }, 
+		{
+        id: 196,
+        genre: "majara",
+        title: "آلکاتراز در مقابل کتابداران شرور",
+        author: "برندون سندرسون|شقایق خانجانی",
+        price: "540,000",
+        image: "../../gif/majara30.jpg"
+      }, 
+		{
+        id: 197,
+        genre: "majara",
+        title: "آلکاتراز در مقابل استخوان های کتاب",
+        author: "برندون سندرسون|شقایق خانجانی",
+        price: "560,000",
+        image: "../../gif/majara31.jpg"
+      }, 
+		{
+        id: 198,
+        genre: "majara",
+        title: "آلکاتراز در مقابل عدسی شکسته",
+        author: "برندون سندرسون|شقایق خانجانی",
+        price: "530,000",
+        image: "../../gif/majara32.jpg"    
+      },
+		
+		
+		
+		
+		{
+        id: 199,
+        genre: "comedy",
+        title: "جداداد",
+        author: "حمیدرضا رضوانی اول",
+        price: "250,000",
+        image: "../../gif/comedy1.jpg"
+      },
+		{
+        id: 200,
+        genre: "comedy",
+        title: "فریدون که هدف از خلقت ما بود",
+        author: "سهیل کاراگاه",
+        price: "400,000",
+        image: "../../gif/comedy2.jpg"
+      },
+		{
+        id: 201,
+        genre: "comedy",
+        title: "وقتی کلاغ رئیس جمهور می شود",
+        author: "محمدرضا احمدی",
+        price: "380,000",
+        image: "../../gif/comedy3.jpg"
+      },
+		{
+        id: 202,
+        genre: "comedy",
+        title: "در انتظار گودو",
+        author: "ساموئل بکت|مرادحسین عباسپور",
+        price: "690,000",
+        image: "../../gif/comedy4.jpg"
+      },
+		{
+        id: 203,
+        genre: "comedy",
+        title: "خاطرات یک بچه ی بی عرضه؛فرمایشات جناب رودریک",
+        author: "جف کینی|فرخنده بافنده",
+        price: "860,000",
+        image: "../../gif/comedy5.jpg"
+      },
+		{
+        id: 204,
+        genre: "comedy",
+        title: "زمانی برای انقراض خاندان فخر ملکی",
+        author: "سحر شریف نیک",
+        price: "400,000",
+        image: "../../gif/comedy6.jpg"
+      },
+		{
+        id: 205,
+        genre: "comedy",
+        title: "پیرمرد صدساله ای که از پنجره بیرون پرید و ناپدید شد",
+        author: "یوناس سوناسون|مجتبی پورمحسن",
+        price: "600,000",
+        image: "../../gif/comedy7.jpg"
+      },
+		{
+        id: 206,
+        genre: "comedy",
+        title: "گزیده طنز عبید زاکانی",
+        author: "عبید زاکانی|ابوالفضل زرویی نصر اباد",
+        price: "229,000",
+        image: "../../gif/comedy8.jpg"
+      },
+		{
+        id: 207,
+        genre: "comedy",
+        title: "آقای با کلاه و بی کلاه",
+        author: "شل سیلوراستاین|رضی هیرمندی",
+        price: "345,000",
+        image: "../../gif/comedy9.jpg"
+      },
+		{
+        id: 208,
+        genre: "comedy",
+        title: "کالیپسو",
+        author: "دیوید سداریس|رضا اسکندری آذر",
+        price: "600,000",
+        image: "../../gif/comedy10.jpg"
+      },
+		{
+        id: 209,
+        genre: "comedy",
+        title: "دزد مو وزوزی و انسان فرهیخته",
+        author: "محسن پوررمضانی",
+        price: "780,000",
+        image: "../../gif/comedy11.jpg"
+      },
+		{
+        id: 210,
+        genre: "comedy",
+        title: "آبنبات دارچینی",
+        author: "مهرداد صدقی",
+        price: "690,000",
+        image: "../../gif/comedy12.jpg"
+      },
+		{
+        id: 211,
+        genre: "comedy",
+        title: "گچ پژ",
+        author: "محسن رضوانی",
+        price: "100,000",
+        image: "../../gif/comedy13.jpg"
+      },
+		{
+        id: 212,
+        genre: "comedy",
+        title: "فرزندان ایرانیم",
+        author: "داوود امیریان",
+        price: "190,000",
+        image: "../../gif/comedy14.jpg"
+      },
+		{
+        id: 213,
+        genre: "comedy",
+        title: "دلقک خصوصی",
+        author: "جیمز فین گارنر|رضا اسکندری آذر",
+        price: "450,000",
+        image: "../../gif/comedy15.jpg"
+      },
+		{
+        id: 214,
+        genre: "comedy",
+        title: "چگونه با پدرت آشنا شدم؟",
+        author: "مونا زارع",
+        price: "460,000",
+        image: "../../gif/comedy16.jpg"
+      },
+		{
+        id: 215,
+        genre: "comedy",
+        title: "آخرین نشان مردی",
+        author: "مهرداد صدقی",
+        price: "860,000",
+        image: "../../gif/comedy17.jpg"
+      },
+		{
+        id: 216,
+        genre: "comedy",
+        title: "روزنامه سفر میمنت اثر ایلات متفرقه امریغ",
+        author: "احمد شاملو",
+        price: "300,000",
+        image: "../../gif/comedy18.jpg"
+      },
+		{
+        id: 217,
+        genre: "comedy",
+        title: "به دنبال قطعه گمشده",
+        author: "شل سیلوراستاین|شورا پیرزاد",
+        price: "800,000",
+        image: "../../gif/comedy19.jpg"
+      },
+		{
+        id: 218,
+        genre: "comedy",
+        title: "مترسک مزرعه آتشین",
+        author: "داوود امیریان",
+        price: "950,000",
+        image: "../../gif/comedy20.jpg"
+      },
+		{
+        id: 219,
+        genre: "comedy",
+        title: "ایرج خسته است",
+        author: "داوود امیریان",
+        price: "600,000",
+        image: "../../gif/comedy21.jpg"
+      },
+		{
+        id: 220,
+        genre: "comedy",
+        title: "اسرار و ابزار طنز نویسی",
+        author: "وودی الن|محسن سلیمانی",
+        price: "520,000",
+        image: "../../gif/comedy22.jpg"
+      },
+		{
+        id: 221,
+        genre: "comedy",
+        title: "مرگ در می زند",
+        author: "وودی الن|نگار شاطریان",
+        price: "650,000",
+        image: "../../gif/comedy23.jpg"
+      },
+		{
+        id: 222,
+        genre: "comedy",
+        title: "مغز نوشته های یک جنین",
+        author: "مهرداد صدقی",
+        price: "350,000",
+        image: "../../gif/comedy24.jpg"
+      },
+		{
+        id: 223,
+        genre: "comedy",
+        title: "فیضا له",
+        author: "ناصر فیض",
+        price: "295,000",
+        image: "../../gif/comedy25.jpg"
+      },
+		{
+        id: 224,
+        genre: "comedy",
+        title: "تاریخ مختصر به گند کشیدن جهان",
+        author: "تام فیلیپس|زهرا کمالی دهقان",
+        price: "183,000",
+        image: "../../gif/comedy26.jpg"
+      },
+		{
+        id: 225,
+        genre: "comedy",
+        title: "نفرت بازی",
+        author: "فرشاد شالچیان",
+        price: "214,000",
+        image: "../../gif/comedy27.jpg"
+      },
+		{
+        id: 226,
+        genre: "comedy",
+        title: "کفش تنگ",
+        author: "عزیز نسین|صمد بهرنگی",
+        price: "269,000",
+        image: "../../gif/comedy28.jpg"
+      },
+		{
+        id: 227,
+        genre: "comedy",
+        title: "سمفونی بند کفش",
+        author: "عزیز نسین|صمد بهرنگی",
+        price: "280,000",
+        image: "../../gif/comedy29.jpg"
+      },
+		{
+        id: 228,
+        genre: "comedy",
+        title: "به خاطر پنج قروش",
+        author: "عزیز نسین|صمد بهرنگی",
+        price: "360,000",
+        image: "../../gif/comedy30.jpg"
+      },
+		{
+        id: 229,
+        genre: "comedy",
+        title: "قماش انگلیس",
+        author: "عزیز نسین|صمد بهرنگی",
+        price: "250,000",
+        image: "../../gif/comedy31.jpg"
+      },
+		{
+        id: 230,
+        genre: "comedy",
+        title: "تعظیلات بی دغدغه",
+        author: "دیوید سداریس|میلاد زکریا",
+        price: "580,000",
+        image: "../../gif/comedy32.jpg"
+      },
+		{
+        id: 231,
+        genre: "comedy",
+        title: "وقتی نمونده",
+        author: "دیوید آیوز|وحید عالم",
+        price: "200,000",
+        image: "../../gif/comedy33.jpg"
+      },
+		
+		
+		
+		
+		
+		{
+        id: 232,
+        genre: "jenaii",
+        title: "بیمار خاموش",
+        author: "الکس مایکلیدیس|مریم حسین نژاد",
+        price: "560,000",
+        image: "../../gif/jenaii1.jpg"
+      },
+		{
+        id: 233,
+        genre: "jenaii",
+        title: "دوستدار",
+        author: "فریدا مک لادن|نشاط رحمانی زاده",
+        price: "840,000",
+        image: "../../gif/jenaii2.jpg"
+      },
+		{
+        id: 234,
+        genre: "jenaii",
+        title: "راز خدمتکار",
+        author: "فریدا مک لادن|مریم علیزاده میلانلو",
+        price: "448,000",
+        image: "../../gif/jenaii3.jpg"
+      },
+		{
+        id: 235,
+        genre: "jenaii",
+        title: "دختر خوب،خون بد",
+        author: "هالی جکسون|محدثه احمدی",
+        price: "870,000",
+        image: "../../gif/jenaii4.jpg"
+      },
+		{
+        id: 236,
+        genre: "jenaii",
+        title: "تنها بازمانده",
+        author: "رایلی سیجر|یاسمن ثانوی",
+        price: "230,000",
+        image: "../../gif/jenaii5.jpg"
+      },
+		{
+        id: 237,
+        genre: "jenaii",
+        title: "پسر خوب",
+        author: "فریدا مک لادن|صبا ایمانی",
+        price: "550,000",
+        image: "../../gif/jenaii6.jpg"
+      },
+		{
+        id: 238,
+        genre: "jenaii",
+        title: "مادرخوانده",
+        author: "فریدا مک لادن|نشاط رحمانی نژاد",
+        price: "320,000",
+        image: "../../gif/jenaii7.jpg"
+      },
+		{
+        id: 239,
+        genre: "jenaii",
+        title: "گربه سیاه",
+        author: "ادگار آلن پو|شهاب حبیبی",
+        price: "129,000",
+        image: "../../gif/jenaii8.jpg"
+      },
+		{
+        id: 240,
+        genre: "jenaii",
+        title: "عملیات بیولوژیک",
+        author: "علیرضا سکاکی",
+        price: "115,000",
+        image: "../../gif/jenaii9.jpg"
+      },
+		{
+        id: 241,
+        genre: "jenaii",
+        title: "عزرائیل",
+        author: "نیما اکبرخانی",
+        price: "950,000",
+        image: "../../gif/jenaii10.jpg"
+      },
+		{
+        id: 242,
+        genre: "jenaii",
+        title: "در ممنوعه",
+        author: "فریدا مک لادن|یاسمن ثانوی",
+        price: "120,000",
+        image: "../../gif/jenaii11.jpg"
+      },
+		{
+        id: 243,
+        genre: "jenaii",
+        title: "بند اعدامی ها",
+        author: "فریدا مک لادن|مونا نصر",
+        price: "180,000",
+        image: "../../gif/jenaii12.jpg"
+      },
+		{
+        id: 244,
+        genre: "jenaii",
+        title: "پشت در های بسته",
+        author: "بی.ای پاریس|آرزو امیررضایی",
+        price: "600,000",
+        image: "../../gif/jenaii13.jpg"
+      },
+		{
+        id: 245,
+        genre: "jenaii",
+        title: "هشت قتل حرفه ای",
+        author: "پیتر سوانسون|فرانک سالاری",
+        price: "320,000",
+        image: "../../gif/jenaii14.jpg"
+      },
+		{
+        id: 246,
+        genre: "jenaii",
+        title: "اجازه نده او بماند",
+        author: "نیک.لا ساندرز|فرانک سالاری",
+        price: "105,000",
+        image: "../../gif/jenaii15.jpg"
+      },
+		{
+        id: 247,
+        genre: "jenaii",
+        title: "زن طبقه بالا",
+        author: "فریدا مک لادن|نسیم شکاری",
+        price: "200,000",
+        image: "../../gif/jenaii16.jpg"
+      },
+		{
+        id: 248,
+        genre: "jenaii",
+        title: "نجواگر",
+        author: "الکس نورض|میلاد بابانژاد",
+        price: "120,000",
+        image: "../../gif/jenaii17.jpg"
+      },
+		{
+        id: 249,
+        genre: "jenaii",
+        title: "بدخواهی",
+        author: "کیگو هیگاشینو|نسترن حیدری",
+        price: "600,000",
+        image: "../../gif/jenaii18.jpg"
+      },
+		{
+        id: 250,
+        genre: "jenaii",
+        title: "خدمتکار تماشا می کند",
+        author: "فریدا مک لادن|مریم علیزاده میلانلو",
+        price: "721,000",
+        image: "../../gif/jenaii19.jpg"
+      },
+		{
+        id: 251,
+        genre: "jenaii",
+        title: "عروسی خدمتکار",
+        author: "فریدا مک لادن|مریم علیزاده میلانلو",
+        price: "539,000",
+        image: "../../gif/jenaii20.jpg"
+      },
+		{
+        id: 252,
+        genre: "jenaii",
+        title: "اگر شرور بودیم",
+        author: "ام.ال.ریو|آنیتا پارسا",
+        price: "980,000",
+        image: "../../gif/jenaii21.jpg"
+      },
+		{
+        id: 253,
+        genre: "jenaii",
+        title: "کار،کار خودیه",
+        author: "دنیل سیلوا|مریم کرمی",
+        price: "165,000",
+        image: "../../gif/jenaii22.jpg"
+      },
+		{
+        id: 254,
+        genre: "jenaii",
+        title: "آدمکش",
+        author: "آنتونی شفر|شهرام زرگر",
+        price: "110,000",
+        image: "../../gif/jenaii23.jpg"
+      },
+		{
+        id: 255,
+        genre: "jenaii",
+        title: "قطار سریع السیر توکیو",
+        author: "سیچو ماتسوموتو|دومان بهرامی",
+        price: "100,000",
+        image: "../../gif/jenaii12.jpg"
+      },
+		{
+        id: 256,
+        genre: "jenaii",
+        title: "معمایی در جنگل",
+        author: "کیت آلیس مارشال|رویا مهرگان راد",
+        price: "150,000",
+        image: "../../gif/jenaii13.jpg"
+      },
+		{
+        id: 257,
+        genre: "jenaii",
+        title: "پاس شب",
+        author: "مایکل کانلی|قاسم کیانی مقدم",
+        price: "200,000",
+        image: "../../gif/jenaii14.jpg"
+      },
+		{
+        id: 258,
+        genre: "jenaii",
+        title: "دروغ رازآلود شوهر زن بیوه",
+        author: "فریدا مک فادن|کاملیا داودی",
+        price: "900,000",
+        image: "../../gif/jenaii15.jpg"
+      },
+		{
+        id: 259,
+        genre: "jenaii",
+        title: "بر آستان وسوسه",
+        author: "سبا شکوهی",
+        price: "950,000",
+        image: "../../gif/jenaii16.jpg"
+      },
+		{
+        id: 260,
+        genre: "jenaii",
+        title: "آخرین حرف ها",
+        author: "جیلیان مک آلیستر|نسیم کرایلی",
+        price: "120,000",
+        image: "../../gif/jenaii17.jpg"
+      },
+		{
+        id: 261,
+        genre: "jenaii",
+        title: "پلیس لندن",
+        author: "آرتور کانن دویل|عبدالحسین میرزا قاجار",
+        price: "140,000",
+        image: "../../gif/jenaii18.jpg"
+      },
+		{
+        id: 262,
+        genre: "jenaii",
+        title: "مرد دودی",
+        author: "الکس نورث|امید حسینی",
+        price: "720,000",
+        image: "../../gif/jenaii19.jpg"
+      },
+		{
+        id: 263,
+        genre: "jenaii",
+        title: "ذختران سوزان",
+        author: "سی.جی.تودور|مریم حسین نژاد",
+        price: "150,000",
+        image: "../../gif/jenaii20.jpg"
+      },
+		{
+        id: 264,
+        genre: "jenaii",
+        title: "اتاق اعدامی ها",
+        author: "فریدا مک فادن|هلن امیری",
+        price: "600,000",
+        image: "../../gif/jenaii21.jpg"
+      },
+		
+		
+		
+		
+		
+		
+    ];
+
+    function filterBooks() {
+      const selectedGenre = document.getElementById('genreSelect').value;
+      const container = document.getElementById('booksContainer');
+      const noResult = document.getElementById('noResult');
+      
+      container.innerHTML = '';
+      
+      if (!selectedGenre) {
+        noResult.classList.add('d-none');
+        return;
+      }
+
+      const filteredBooks = booksData.filter(book => book.genre === selectedGenre);
+
+      if (filteredBooks.length === 0) {
+        noResult.classList.remove('d-none');
+      } else {
+        noResult.classList.add('d-none');
+        
+        filteredBooks.forEach(book => {
+           
+          const bookHTML = `
+            <div class="col-12">
+              <div class="card h-100 shadow-sm border-0">
+                <div class="card-body p-0">
+                  <div class="row g-0 align-items-center">
+                    
+                    <div class="col-md-3 text-center p-3">
+                      <img src="${book.image}" class="img-fluid rounded-start w-100" style="max-height: 300px; object-fit: cover;" alt="${book.title}">
+                    </div>
+                    
+                    <div class="col-md-5 text-center text-md-start p-3">
+                      <h5 class="card-title fw-bold mb-1 fs-5 text-primary">${book.title}</h5>
+                      <p class="card-text text-muted mb-0 small">نویسنده: ${book.author}</p>
+                    </div>
+                    
+                    <div class="col-md-4 text-center text-md-end p-3 border-start border-2 border-light">
+                      <span class="d-block fw-bold fs-5 text-success mb-2">${book.price} تومان</span>
+                      
+                      <div class="d-flex justify-content-center justify-content-md-end align-items-center gap-2 mb-2">
+                        <button class="btn btn-outline-secondary btn-sm rounded-circle" onclick="updateQty(${book.id}, 1)">+</button>
+                        <input type="number" id="qty-${book.id}" class="form-control text-center border-secondary" value="1" style="width: 50px;" readonly>
+                        <button class="btn btn-outline-secondary btn-sm rounded-circle" onclick="updateQty(${book.id}, -1)">-</button>
+                      </div>
+                      
+                      <button class="btn btn-primary w-100 py-2 rounded-pill fw-bold shadow-sm" onclick="addToCart(${book.id})">
+                        افزودن به سبد خرید 🛒
+                      </button>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          container.innerHTML += bookHTML;
+        });
+      }
+    }
+
+    function updateQty(id, change) {
+      const input = document.getElementById(`qty-${id}`);
+      let currentVal = parseInt(input.value);
+      let newVal = currentVal + change;
+      
+      if (newVal < 1) newVal = 1;
+      input.value = newVal;
+    }
+
+    function addToCart(id){
+
+      const qty =
+      parseInt(
+      document.getElementById(`qty-${id}`).value
+      );
+      
+      const book =
+      booksData.find(
+      b => b.id === id
+      );
+      
+      let cart =
+      JSON.parse(
+      localStorage.getItem("cart")
+      ) || [];
+      
+      const existing =
+      cart.find(
+      item => item.id === id
+      );
+      
+      if(existing){
+      
+      existing.qty += qty;
+      
+      }else{
+      
+      cart.push({
+      
+      id:book.id,
+      title:book.title,
+      price:book.price,
+      image:book.image,
+      qty:qty
+      
+      });
+      
+      }
+      
+      localStorage.setItem(
+      "cart",
+      JSON.stringify(cart)
+      );
+      
+      renderCart();
+      
+      new bootstrap.Offcanvas(
+      document.getElementById("cartSidebar")
+      ).show();
+      
+      }
+      function renderCart(){
+
+        let cart =
+        JSON.parse(
+        localStorage.getItem("cart")
+        ) || [];
+        
+        let html = "";
+        let total = 0;
+        
+        cart.forEach(item=>{
+        
+        const price =
+        parseInt(
+        item.price.replace(/,/g,'')
+        );
+        
+        const subtotal =
+        price * item.qty;
+        
+        total += subtotal;
+        
+        html += `
+        
+        <div class="card mb-2">
+        
+        <div class="card-body">
+        
+        <h6 class="fw-bold">
+        ${item.title}
+        </h6>
+        
+        <p>
+        تعداد:
+        ${item.qty}
+        </p>
+        
+        <p class="text-success fw-bold">
+        
+        ${subtotal.toLocaleString()}
+        تومان
+        
+        </p>
+        
+        </div>
+        
+        </div>
+        
+        `;
+        
+        });
+        
+        if(cart.length===0){
+        
+        html =
+        '<p class="text-muted">سبد خرید خالی است</p>';
+        
+        }
+        
+        document.getElementById(
+        "cartItems"
+        ).innerHTML = html;
+        
+        document.getElementById(
+        "cartCount"
+        ).innerText = cart.length;
+        
+        document.getElementById(
+        "cartTotal"
+        ).innerText =
+        "جمع کل: "
+        +
+        total.toLocaleString()
+        +
+        " تومان";
+        
+        }
+        
+        renderCart();
+  </script>
+  <div
+  class="offcanvas offcanvas-start"
+  tabindex="-1"
+  id="cartSidebar">
+  
+  <div class="offcanvas-header">
+  
+  <h5 class="offcanvas-title">
+  سبد خرید
+  </h5>
+  
+  <button
+  type="button"
+  class="btn-close"
+  data-bs-dismiss="offcanvas">
+  </button>
+  
+  </div>
+  
+  <div
+  class="offcanvas-body"
+  id="cartItems">
+  
+  <p class="text-muted">
+  سبد خرید خالی است
+  </p>
+  
+  </div>
+  
+  <div class="p-3 border-top">
+  
+  <h6 id="cartTotal">
+  جمع کل: 0 تومان
+  </h6>
+  
+  <a
+  href="cart.html"
+  class="btn btn-primary w-100">
+  
+  مشاهده سبد خرید
+  
+  </a>
+  
+  </div>
+  
+  </div>
+</body>
+</html>

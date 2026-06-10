@@ -1,0 +1,1549 @@
+    <!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tabook</title>
+    <link rel="stylesheet" href="css/bootstrap.rtl.min.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+</head>
+<body class="bg-light">
+
+<!-- بنر زرده ماشینیه اون بالا-->
+<div class="container-fluid p-0">
+<a href="#"><img src="../../gif/car.gif" class="w-100"></a>
+</div>
+
+<!--کادره سرچه کناره عکس لوگو-->
+<div class="container py-3">
+<div class="row align-items-center gy-3">
+  <div class="col-6 col-md-2 text-start">
+      <a href="#"><img src="../../gif/logo.jpg" class="img-fluid"></a>
+  </div>
+  <div class="col-md-7 d-none d-md-block">
+      <input type="text" class="form-control" placeholder="جستجوی کتاب در طابوک ...">
+  </div>
+  <div class="col-6 col-md-3 text-end">
+      <a href="#" class="me-3" style="text-decoration:none">🔔</a>
+      <a href="login.html" class="btn btn-outline-secondary" style="text-decoration:none">ثبت‌نام | ورود</a>
+      <a href="#" class="me-3" style="text-decoration:none">🛒</a>
+  </div>
+  <div class="col-12 d-md-none">
+      <input type="text" class="form-control" placeholder="جستجوی کتاب در طابوک ...">
+  </div>
+</div>
+</div>
+
+<!--دسته بندیای منو-->
+<div class="container border-top pt-2">
+<div class="row align-items-center">
+    <div class="col-auto"><a href="#"><img src="" width="25"></a></div>
+    <div class="col-auto"><a href="#zhanr" class="fw-bold text-dark" style="text-decoration:none">🟰ژانر کتاب ها</a></div>
+    <div class="col-auto"><a href="#binahayat" class="text-secondary" style="text-decoration:none"> ♾️بی نهایت</a></div>
+    <div class="col-auto"><a href="cart.html" class="text-secondary" style="text-decoration:none">📚کتاب های من</a></div>
+    <div class="col-auto"><a href="#padkast" class="text-secondary" style="text-decoration:none">🎧پادکست رایگان</a></div>
+    <div class="col-auto"><a href="#" class="text-secondary" style="text-decoration:none"></a></div>
+    <div class="col text-end"><a href="login.html  " class="text-secondary" style="text-decoration:none">👤حساب کاربری</a></div>
+</div>
+</div>
+
+<!--استوریا-->
+<div class="container mt-4">
+<div style="display:flex; overflow-x:auto; gap:10px; padding:10px 0;">
+
+  <div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn1.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب های صوتی</div>
+</div>
+
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4 ); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn2.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب های الکترونیکی</div>
+</div>
+
+<div
+style="text-align:center;cursor:pointer;"
+onclick="openStory(
+'../../gif/story1.jpg',
+'کتاب های صوتی',
+'جدیدترین کتاب های صوتی طابوک را از دست نده 🎧📚'
+)">
+
+    <div style="background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+    border-radius:50%;
+    padding:4px;">
+
+        <div style="background:#fff;
+        border-radius:50%;
+        padding:2px;">
+
+            <img
+            src="../../gif/iconn1.jpg"
+            style="width:70px;height:70px;border-radius:50%;">
+
+        </div>
+
+    </div>
+
+    <div style="font-size:.8rem;margin-top:4px;width:80px;">
+        اشتراک بی نهایت
+    </div>
+
+</div>
+
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn4.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">کشف کتاب</div>
+</div>
+
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn5.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب برای تو</div>
+</div>
+
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn6.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">هدیه دادن <بی نهایت></div>
+</div>
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn7.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">خلاصه کتاب</div>
+</div>
+
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn8.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">مجله و روزنامه</div>
+</div>
+
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn9.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">درسی و کمک درسی</div>
+</div>
+
+<div style="text-align:center;">
+    <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+      <div style="background:#fff; border-radius:50%; padding:2px;">
+          <img src="../../gif/iconn10.jpg" style="width:70px; height:70px; border-radius:50%;">
+      </div>
+    </div>
+    <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب های رایگان</div>
+</div><div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn1.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب های صوتی</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn2.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب های الکترونیکی</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn3.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">اشتراک بی نهایت</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn4.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">کشف کتاب</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn5.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب برای تو</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn6.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">هدیه دادن <بی نهایت></div>
+</div>
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn7.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">خلاصه کتاب</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn8.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">مجله و روزنامه</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn9.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">درسی و کمک درسی</div>
+</div>
+
+<div style="text-align:center;">
+  <div style="background: linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4); border-radius:50%; padding:4px;">
+    <div style="background:#fff; border-radius:50%; padding:2px;">
+        <img src="../../gif/iconn10.jpg" style="width:70px; height:70px; border-radius:50%;">
+    </div>
+  </div>
+  <div style="font-size:0.8rem; margin-top:4px; width:80px;">کتاب های رایگان</div>
+</div>
+</div>
+</div>
+
+
+<!-- اسلاید شو -->
+<div class="container mt-4">
+<div id="mainSlider" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+<div class="carousel-inner">
+    <div class="carousel-item active"><a href="#"><img src="../../gif/slide1.jpg" class="d-block w-100"></a></div>
+    <div class="carousel-item"><a href="#"><img src="../../gif/slide2.jpg" class="d-block w-100"></a></div>
+    <div class="carousel-item"><a href="#"><img src="../../gif/slide3.jpg" class="d-block w-100"></a></div>
+    <div class="carousel-item"><a href="#"><img src="../../gif/slide4.jpg" class="d-block w-100"></a></div>
+  </div>
+</div>
+<button class="carousel-control-prev" data-bs-target="#mainSlider" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+</button>
+<button class="carousel-control-next" data-bs-target="#mainSlider" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+</button>
+</div>
+</div>
+
+<!--ایکونای پایین اسلاید شو-->
+<div class="container mt-4">
+<div class="d-flex overflow-auto gap-4 text-center py-2">
+
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon2.jpg" width="50">
+      <div class="small">بهترین قیمت ها</div>
+  </a>
+</div>
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+       <img src="../../gif/icon3.jpg" width="50">
+      <div class="small">بالای 50% تخفیف</div>
+  </a>
+</div>
+
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon2.jpg" width="50">
+      <div class="small">بهترین قیمت ها</div>
+  </a>
+</div>
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon3.jpg" width="50">
+      <div class="small">بالای 50% تخفیف</div>
+  </a>
+</div>
+
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon2.jpg" width="50">
+      <div class="small">بهترین قیمت ها</div>
+  </a>
+</div>
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon3.jpg" width="50">
+      <div class="small">بالای 50% تخفیف</div>
+  </a>
+</div>
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon2.jpg" width="50">
+      <div class="small">بهترین قیمت ها</div>
+  </a>
+</div>
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon3.jpg" width="50">
+      <div class="small">بالای 50% تخفیف</div>
+  </a>
+</div>
+
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon2.jpg" width="50">
+      <div class="small">بهترین قیمت ها</div>
+  </a>
+</div>
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon3.jpg" width="50">
+      <div class="small">بالای 50% تخفیف</div>
+  </a>
+</div>
+
+<div class="flex-shrink-0">
+  <a href="#" style="text-decoration:none; color:inherit;">
+      <img src="../../gif/icon4.jpg" width="50">
+      <div class="small">بیشتر</div>
+  </a>
+</div>
+</div>
+</div>
+     
+    <!--کادره پادکست رایگان -->
+<div id="padkast" class="container my-4">
+<div class="bg-primary rounded-4 p-3">
+<div class="row align-items-center mb-3">
+    <div class="col-md-3 text-center text-md-start">
+    <h5 class="text-white fw-bold mb-2">پادکست های رایگان</h5>
+    <img src="../../gif/logoshegeft.jpg" class="img-fluid rounded mb-2">
+    <div>
+        <a href="#" class="text-white small fw-bold">مشاهده همه</a>
+    </div>
+    </div>
+
+<div class="col-md-9">
+<div class="d-flex overflow-auto gap-3 py-2">
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2">
+<a href="#"><img src="../../gif/pad1.jpg" class="card-img-top"></a>
+  <div class="card-body p-2">
+    <p class="small text-center mb-0">خواب های جهان</p>
+  </div>
+</div>
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2">
+<a href="#"><img src="../../gif/pad2.jpg" class="card-img-top"></a>
+  <div class="card-body p-2">
+      <p class="small text-center mb-0">پیش از انکه بدانی</p>
+    </div>
+</div>
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2">
+<a href="#"><img src="../../gif/pad3.jpg" class="card-img-top"></a>
+  <div class="card-body p-2">
+    <p class="small text-center mb-0">پیوستگی</p>
+  </div>
+</div>
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2">
+<a href="#"><img src="../../gif/pad4.jpg" class="card-img-top"></a>
+  <div class="card-body p-2">
+    <p class="small text-center mb-0">سین</p>
+  </div>
+</div>
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2">
+<a href="#"><img src="../../gif/pad5.jpg" class="card-img-top"></a>
+  <div class="card-body p-2">
+    <p class="small text-center mb-0">درباره چهار نفر</p>
+  </div>
+</div>
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2">
+<a href="#"><img src="../../gif/pad6.jpg" class="card-img-top"></a>
+  <div class="card-body p-2">
+    <p class="small text-center mb-0">روز طردگی</p>
+  </div>
+</div>
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2">
+<a href="#"><img src="../../gif/pad7.jpg" class="card-img-top"></a>
+  <div class="card-body p-2">
+    <p class="small text-center mb-0">هراس از احساس</p>
+  </div>
+</div>
+
+<div class="card flex-shrink-0 col-6 col-sm-4 col-md-3 col-lg-2 d-flex justify-content-center align-items-center">
+  <a href="#" class="text-primary fw-bold">مشاهده همه</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--چهار تا عکس بالای  ستاره های کتاب-->
+  <div class="container my-4">
+      <div class="row g-3">
+<div class="col-6 col-md-3">
+    <a href="#">
+        <img src="../../gif/zir1.jpg" class="img-fluid rounded">
+    </a>
+</div>
+<div class="col-6 col-md-3">
+    <a href="#">
+        <img src="../../gif/zir2.jpg" class="img-fluid rounded">
+    </a>
+</div>
+<div class="col-6 col-md-3">
+    <a href="#">
+        <img src="../../gif/zir3.jpg" class="img-fluid rounded">
+    </a>
+</div>
+<div class="col-6 col-md-3">
+    <a href="#">
+        <img src="../../gif/zir4.jpg" class="img-fluid rounded">
+    </a>
+  </div>
+</div>
+</div>
+<!--ستاره های کتاب-->
+<div class="container my-4">
+<h3 class="mb-3" style="text-align: center">ستاره های دنیای کتاب</h3>
+<h6 class="mb-3" style="text-align: center">برنده ی جوایز ادبی و برگزیده مجلات</h6>
+<div class="d-flex overflow-auto gap-3 py-2 text-center">
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand1.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand2.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand3.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand4.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand5.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand6.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand7.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand8.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand9.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand1.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand2.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand3.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand4.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand5.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand6.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand7.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand8.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand9.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand1.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand2.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand3.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand4.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand5.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand6.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+</div>
+</div>
+
+<div class="container my-4">
+<div class="d-flex overflow-auto gap-3 py-2 text-center">
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand10.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand11.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand12.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand13.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand14.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand15.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand16.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none"> 
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand17.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand10.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand11.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand12.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand13.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand14.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand15.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand16.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand17.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand10.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand11.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand12.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand13.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand14.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand15.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand16.jpg" class="rounded" style="width:100px; height:80px;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0 text-center" style="width:90px;">
+  <a href="#" class="text-decoration-none">
+    <div class="rounded-circle story-gradient mx-auto" style="padding:3px;">
+      <img src="../../gif/barand17.jpg" class="rounded" style="width:100px; height:8  0px;">
+    </div>
+  </a>
+</div>
+</div>
+</div>
+      <!-- دوتا عکس بالای  هر حال-->
+<div class="container my-4">
+  <div class="row g-3">
+  <div class="col-6">
+    <a href="#">
+      <img src="../../gif/a1.jpg" class="img-fluid rounded">
+    </a>
+  </div>
+  <div class="col-6">
+    <a href="#">
+      <img src="../../gif/a2.jpg" class="img-fluid rounded">
+    </a>
+  </div>
+</div>
+</div>
+    <!-- کادره برای هر حال-->
+<div class="container my-4">
+<div class="p-3 bg-white rounded-4 shadow-sm">
+<div class="d-flex overflow-auto gap-3 py-2">
+<div class="container my-4">
+  <div class="p-3 bg-white rounded-4 shadow-sm">
+    <h5 class="text-center fw-bold mb-3">برای هر حال , یک کتاب</h5>
+      <div class="d-flex overflow-auto gap-3 py-2">  
+                    
+<div class="flex-shrink-0" style="width:180px;">
+  <a href="#">
+    <div class="rounded-3 overflow-hidden">
+      <img src="../../gif/baraye1.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0" style="width:180px;">
+  <a href="#">
+    <div class="rounded-3 overflow-hidden">
+      <img src="../../gif/baraye2.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0" style="width:180px;">
+  <a href="#">
+    <div class="rounded-3 overflow-hidden">
+      <img src="../../gif/baraye3.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+    </div>
+  </a>
+</div>
+
+<div class="flex-shrink-0" style="width:180px;">
+  <a href="#">
+    <div class="rounded-3 overflow-hidden">
+      <img src="../../gif/baraye4.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye5.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye6.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye7.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye8.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye9.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye10.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye11.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye12.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye13.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye14.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+ 
+  <div class="flex-shrink-0" style="width:180px;">
+    <a href="#">
+      <div class="rounded-3 overflow-hidden">
+        <img src="../../gif/baraye15.jpg" class="img-fluid w-100" style="height:100px; object-fit:cover;">
+      </div>
+    </a>
+  </div>
+         
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+<!--عکس زیر هر حال -->
+<div class="container my-4">
+<div class="row g-3">
+<div class="col-6">
+  <a href="#">
+      <img src="../../gif/a3.jpg" class="img-fluid rounded">
+  </a>
+</div>
+<div class="col-6">
+  <a href="#">
+      <img src="../../gif/a4.jpg" class="img-fluid rounded">
+  </a>
+</div>
+</div>
+</div>
+<!--کادر ستون چهار تایی بر اساس سلیقه شما-->
+<div class="container my-4">
+
+<div class="row g-0 p-3 border rounded-3 shadow-sm" style="background:#fff;">
+
+
+<div class="col-12 col-md-3 px-3" style="border-left:1px solid #eee;">
+<h6 class="fw-bold mt-2">بر اساس سلیقه شما</h6>
+
+
+<div class="row g-2 mt-3">
+  <div class="col-6"><a href="#"><img src="../../gif/k1.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k2.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k3.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k4.jpg" class="img-fluid rounded-3 border"></a></div>
+</div>
+
+<a href="#" class="d-block mt-3 small text-primary">مشاهده</a>
+</div>
+
+<div class="col-12 col-md-3 px-3" style="border-left:1px solid #eee;">
+  <h6 class="fw-bold mt-2">بر اساس سلیقه شما</h6>
+
+<div class="row g-2 mt-3">
+  <div class="col-6"><a href="#"><img src="../../gif/k5.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k6.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k7.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k8.jpg" class="img-fluid rounded-3 border"></a></div>
+</div>
+
+<a href="#" class="d-block mt-3 small text-primary">مشاهده</a>
+</div>
+
+
+<div class="col-12 col-md-3 px-3" style="border-left:1px solid #eee;">
+  <h6 class="fw-bold mt-2">بر اساس سلیقه شما</h6>
+
+<div class="row g-2 mt-3">
+  <div class="col-6"><a href="#"><img src="../../gif/k9.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k10.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k11.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k12.jpg" class="img-fluid rounded-3 border"></a></div>
+</div>
+
+<a href="#" class="d-block mt-3 small text-primary">مشاهده</a>
+</div>
+
+<div class="col-12 col-md-3 px-3" style="border-left:1px solid #eee;">
+  <h6 class="fw-bold mt-2">بر اساس سلیقه شما</h6>
+
+<div class="row g-2 mt-3">
+  <div class="col-6"><a href="#"><img src="../../gif/k13.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k14.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k15.jpg" class="img-fluid rounded-3 border"></a></div>
+  <div class="col-6"><a href="#"><img src="../../gif/k16.jpg" class="img-fluid rounded-3 border"></a></div>
+</div>
+
+<a href="#" class="d-block mt-3 small text-primary">مشاهده</a>
+</div>
+</div>
+</div>
+
+<!--کادر ژانر ها-->
+<a href="zhanr1.html" style="text-decoration:none">
+<div id="zhanr" class="container my-4">
+<div class="bg-white rounded-4 p-4 shadow-sm">
+<div class="text-center mb-3">
+  <h5 class="fw-bold">انتخاب داستان براساس ژانر</h5>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh1.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">1</div>
+    <div class="col-7 small p-0">عاشقانه</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh2.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">2</div>
+    <div class="col-7 small p-0">فانتزی</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh3.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">3</div>
+    <div class="col-7 small p-0">تاریخی</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh4.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">4</div>
+    <div class="col-7 small p-0">علمی تخیلی</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh5.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">5</div>
+    <div class="col-7 small p-0">ترسناک</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh6.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">6</div>
+    <div class="col-7 small p-0">ماجراجویانه</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh7.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">7</div>
+    <div class="col-7 small p-0">طنز</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh8.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">8</div>
+    <div class="col-7 small p-0">جنایی</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh9.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">9</div>
+    <div class="col-7 small p-0">حماسی</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh10.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">10</div>
+    <div class="col-7 small p-0">مذهبی</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh11.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">11</div>
+    <div class="col-7 small p-0">رئالیسم</div>
+  </div>
+</div>
+<div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+  <div class="row p-0 m-0">
+    <div class="col-3 p-0">
+      <img class="w-100" src="../../gif/zh12.jpg" alt="">
+    </div>
+    <div class="col-1 p-0">12</div>
+    <div class="col-7 small p-0">سورئالیسم</div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+    <div class="row p-0 m-0">
+      <div class="col-3 p-0">
+        <img class="w-100" src="../../gif/zh13.jpg" alt="">
+      </div>
+      <div class="col-1 p-0">13</div>
+      <div class="col-7 small p-0">تراژدی</div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+      <div class="row p-0 m-0">
+        <div class="col-3 p-0">
+          <img class="w-100" src="../../gif/zh14.jpg" alt="">
+        </div>
+        <div class="col-1 p-0">14</div>
+        <div class="col-7 small p-0">انگیزشی</div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+        <div class="row p-0 m-0">
+          <div class="col-3 p-0">
+            <img class="w-100" src="../../gif/zh15.jpg" alt="">
+          </div>
+          <div class="col-1 p-0">15</div>
+          <div class="col-7 small p-0">کلاسیک</div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 my-2 p-0">
+          <div class="row p-0 m-0">
+            <div class="col-3 p-0">
+              <img class="w-100" src="../../gif/zh1.jpg" alt="">
+            </div>
+            <div class="col-1 p-0">16</div>
+            <div class="col-7 small p-0">عاشقانه</div>
+          </div>
+        </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</a>
+
+<!--هدر طور برای بی نهایت-->
+
+<a href="eshterak.html" class="d-block">
+<div id="binahayat" class="container my-3">
+<img src="../../gif/foot.jpg" class="img-fluid w-100 rounded-4" style="max-height:400px; object-fit:cover;">
+</div>
+</a>
+  <!-- کادره منتخب کتاب ها زیر اون هدر طوره-->
+<div class="container my-4">
+<div class="bg-white rounded-4 p-3 shadow-sm">
+<div class="row mb-3">
+<div class="col-12 text-center">
+  <h5 class="fw-bold mb-0">⭐ منتخب کتاب های تخفیف دار و حراج ⭐</h5>
+</div>
+</div>
+<div class="row g-3 mb-3">
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book1.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book2.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book3.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book4.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book5.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book6.jpg"class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+</div>
+
+<div class="row g-3 mb-3">
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book7.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book8.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book9.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book10.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book11.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book13.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+</div>
+
+<div class="row g-3">
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book14.jpg"  class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book15.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book16.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book17.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book18.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+<div class="col-6 col-sm-4 col-md-2">
+  <a href="#" class="d-block">
+    <div class="ratio ratio-1x1 rounded-3 overflow-hidden">
+      <img src="../../gif/book19.jpg" class="w-100 h-100" style="object-fit:cover;">
+    </div>
+  </a>
+</div>
+</div>
+</div>
+</div>
+                    
+    <!--فوترم-->
+    <footer class="mt-5 bg-light pt-5 border-top">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-start flex-wrap">
+          <div class="text-end">
+            <div class="d-flex flex-column align-items-start">
+              <img src="../../gif/logo.jpg" width="200" class="float-end">
+              <p class="mt-2 small fw-bold mb-0">
+                تلفن پشتیبانی ۶۱۹۳۰۰۰۰ - ۰۲۱ |
+                ۰۲۱-۹۱۰۰۰۱۰۰ |
+                ۷ روز هفته، ۲۴ ساعته پاسخگوی شما هستیم
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+<footer class="mt-5 bg-light pt-5 border-top">
+<div class="container mb-5">
+<div class="row text-center gy-4">
+
+  <div class="col-6 col-md-2">
+      <img class="w-50 mx-auto d-block" src="../../gif/original-products.svg">
+      <p class="mt-2 small fw-bold">ضمانت اصل بودن کالا</p>
+  </div>
+
+  <div class="col-6 col-md-2">
+      <img class="w-50 mx-auto d-block" src="../../gif/days-return.svg">
+      <p class="mt-2 small fw-bold">هفت روز ضمانت بازگشت کالا</p>
+  </div>
+
+  <div class="col-6 col-md-2">
+      <img class="w-50 mx-auto d-block" src="../../gif/support.svg">
+      <p class="mt-2 small fw-bold">۷ روز هفته، ۲۴ ساعته پاسخگویی</p>
+  </div>
+
+  <div class="col-6 col-md-2">
+      <img class="w-50 mx-auto d-block" src="../../gif/cash-on.svg">
+      <p class="mt-2 small fw-bold">امکان پرداخت در محل</p>
+  </div>
+
+  <div class="col-6 col-md-2">
+      <img class="w-50 mx-auto d-block" src="../../gif/express.svg">
+      <p class="mt-2 small fw-bold">تحویل اکسپرس</p>
+  </div>
+</div>
+</div>
+<div class="container mt-5">
+  <div class="row gy-4">
+    <div class="col-12 col-md-3">
+      <h6 class="fw-bold mb-3">با طابوک</h6>
+      <ul class="list-unstyled small">
+        <li><a href="#" class="text-decoration-none text-secondary">اتاق خبر طابوک</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">فروش در طابوک</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">فرصت‌های شغلی در طابوک</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">گزارش تخلف در طابوک</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">تماس با طابوک</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">درباره طابوک</a></li>
+      </ul>
+    </div>
+    <div class="col-12 col-md-3">
+      <h6 class="fw-bold mb-3">خدمات مشتریان</h6>
+      <ul class="list-unstyled small">
+        <li><a href="#" class="text-decoration-none text-secondary">پاسخ به پرسش‌های متداول</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">رویه‌های بازگرداندن کالا</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">شرایط استفاده</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">حریم خصوصی</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">گزارش باگ</a></li>
+      </ul>
+    </div>
+    <div class="col-12 col-md-3">
+      <h6 class="fw-bold mb-3">راهنمای خرید از طابوک</h6>
+      <ul class="list-unstyled small">
+        <li><a href="#" class="text-decoration-none text-secondary">نحوه ثبت سفارش</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">رویه ارسال سفارش</a></li>
+        <li><a href="#" class="text-decoration-none text-secondary">شیوه‌های پرداخت</a></li>
+      </ul>
+    </div>
+    <div class="col-12 col-md-3 text-start">
+      <h6 class="fw-bold mb-3">همراه ما باشید!</h6>
+      <div class="d-flex justify-content-start gap-3">
+        <div class="container mt-4 mb-5 text-start"> 
+          <p class="small">با ثبت ایمیل، از جدید‌ترین تخفیف‌ها باخبر شوید</p>
+          <div class="row justify-content-start">
+              <div class="col-10 col-md-4">
+                  <input type="email" class="form-control" placeholder="ایمیل شما">
+              </div>
+              <div class="col-3 col-md-2 mt-2 mt-md-0">
+                  <button class="btn btn-primary w-150">ثبت</button>
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--کادر دانلود برنامه-->
+<div class="bg-dark text-white py-3 mt-4">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap">
+    <p class="m-0 fw-bold">دانلود اپلیکیشن طابوک</p>
+    <div class="d-flex gap-3 mt-3 mt-md-0">
+        <img src="../../gif/coffe-bazzar.svg" width="120" alt="bazaar">
+        <img src="../../gif/myket.svg" width="120" alt="myket">
+        <img src="../../gif/sib-app.svg" width="120" alt="sibapp">
+        <img src="../../gif/More.svg" width="120" alt="direct">
+    </div>
+    </div>
+</div>
+</footer>
+<div class="modal fade" id="storyModal">
+
+  <div class="modal-dialog modal-dialog-centered">
+  
+  <div class="modal-content bg-dark text-white">
+  
+  <div class="modal-body text-center">
+  
+  <img
+  id="storyImage"
+  class="img-fluid rounded mb-3">
+  
+  <h4 id="storyTitle"></h4>
+  
+  <p id="storyCaption"></p>
+  
+  <button
+  id="storyLike"
+  class="btn btn-dark border border-light"
+  onclick="toggleLike()">
+  
+  🤍
+  
+  </button>
+  
+  </div>
+  
+  </div>
+  
+  </div>
+  
+  </div>
+
+  <script>
+
+    function openStory(image,title,caption){
+    
+    document.getElementById("storyImage").src = image;
+    
+    document.getElementById("storyTitle").innerText = title;
+    
+    document.getElementById("storyCaption").innerText = caption;
+    
+    document.getElementById("storyLike").innerHTML = "🤍";
+    
+    new bootstrap.Modal(
+    document.getElementById("storyModal")
+    ).show();
+    
+    }
+    
+    function toggleLike(){
+    
+    const btn =
+    document.getElementById("storyLike");
+    
+    btn.innerHTML =
+    btn.innerHTML=="🤍"
+    ?
+    "❤️"
+    :
+    "🤍";
+    
+    }
+    
+    </script>
+</body>
+</html>
